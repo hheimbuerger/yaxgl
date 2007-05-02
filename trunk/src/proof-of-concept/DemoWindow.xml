@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<window>
+	<title>test1</title1>
+	<controls>
+		<editbox id="text">
+			<x>10</x>
+			<y>10</y>
+			<width>100</width>
+			<height>25</height>
+			<text/>
+		</editbox>
+		<button id="button">
+			<x>10</x>
+			<y>50</y>
+			<width>100</width>
+			<height>25</height>
+			<label>Hello, world!</label>
+			<onclick>buttonClicked()</onclick>
+		</button>
+	</controls>
+</window>
