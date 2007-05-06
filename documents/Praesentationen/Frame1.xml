@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><window title="Ich bin ein Fenster" xpos="100" ypos="100" height="200" width="300">	<button id="btn1" label="Push Me" xpos="40" ypos="100" height="10" width="40"/></window>
+<?xml version="1.0" encoding="UTF-8"?><window title="Ich bin ein Fenster" xpos="100" ypos="100" height="200" width="300">	<button id="btn1" label="Push Me" xpos="40" ypos="100" 	height="10" width="40"/></window>
