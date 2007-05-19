@@ -1,0 +1,9 @@
+bin\Debug\AnnotationTest.exe
+bin\Debug\AnnotationTest.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\AnnotationTest.Properties.Resources.resources
+obj\Debug\AnnotationTest.csproj.GenerateResource.Cache
+obj\Debug\AnnotationTest.exe
+obj\Debug\AnnotationTest.pdb
+bin\Debug\YaxglTestLib.dll
+bin\Debug\YaxglTestLib.pdb
