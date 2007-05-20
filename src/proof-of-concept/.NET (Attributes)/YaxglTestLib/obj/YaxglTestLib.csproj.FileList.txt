@@ -1,7 +1,0 @@
-bin\Debug\YaxglTestLib.dll
-bin\Debug\YaxglTestLib.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\YaxglTestLib.dll
-obj\Debug\YaxglTestLib.pdb
-obj\Debug\YaxglTestLib.Form1.resources
-obj\Debug\YaxglTestLib.csproj.GenerateResource.Cache
