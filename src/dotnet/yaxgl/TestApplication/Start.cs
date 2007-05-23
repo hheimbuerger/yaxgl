@@ -29,21 +29,21 @@ namespace TestApplication
 
         
         
-        [de.yaxgl.EventHandler(EventType.CLICK,"Button1")]
+        [de.yaxgl.EventHandler(EventType.Click,"Button1")]
         public void clickButton1(Component sender,de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.Button)sender).getLabel() + "\n" + args.ToString());
         }
 
 
-        [de.yaxgl.EventHandler(EventType.FOCUS, "Button1")]
+        [de.yaxgl.EventHandler(EventType.Focus, "Button1")]
         public void focusButton1(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine(((de.yaxgl.Button)sender).getLabel() + " has focus");
         }
 
 
-        [de.yaxgl.EventHandler(EventType.CLICK, "Label1")]
+        [de.yaxgl.EventHandler(EventType.Click, "Label1")]
         public void clickLabel1(Component sender, de.yaxgl.EventArgs args)
         {
             try
@@ -57,25 +57,30 @@ namespace TestApplication
         }
 
 
-        [de.yaxgl.EventHandler(EventType.CLICK, "CheckBox1")]
+        [de.yaxgl.EventHandler(EventType.Click, "CheckBox1")]
         public void clickCheckBoxSex(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.CheckBox)sender).getLabel() + "\n" + args.ToString());
         }
 
-        [de.yaxgl.EventHandler(EventType.CLICK, "LabelGroup")]
+        [de.yaxgl.EventHandler(EventType.Click, "LabelGroup")]
         public void clickLabelGroup(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.Label)sender).getLabel() + "\n" + args.ToString());
         }
 
         //TODO: müssen eine Liste von events unterstützen oder eben diese regex
-        [de.yaxgl.EventHandler(EventType.CLICK, "radio1")]
+        [de.yaxgl.EventHandler(EventType.Click, "radio1")]
         public void clickRadio(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.RadioButton)sender).getLabel() + "\n" + args.ToString());
         }
-    
-    
+
+        [de.yaxgl.EventHandler(EventType.SelectionChanged, "comboBox")]
+        public void selectionChanged(Component sender, de.yaxgl.EventArgs args)
+        {
+            System.Console.WriteLine("Label: " + ((de.yaxgl.ComboBox)sender).getLabel() + "\n" + args.ToString());
+            System.Console.WriteLine(((de.yaxgl.ComboBox)sender).getSelectedItem());
+        }
     }
 }

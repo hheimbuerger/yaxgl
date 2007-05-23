@@ -4,6 +4,7 @@ using System.Text;
 
 namespace de.yaxgl
 {
+    //TODO:SET LABEL ja oder nein
     public class Group : Container,Containable
     {
         Container owner = null;

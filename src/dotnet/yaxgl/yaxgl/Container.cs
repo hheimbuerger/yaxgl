@@ -108,6 +108,13 @@ namespace de.yaxgl
             editBox1.setMaxLength(10);
             components.Add(editBox1);
 
+            ComboBox comboBox = new ComboBox(this, "comboBox");
+            comboBox.setBounds(50, 350, 100, 20);
+            comboBox.addItem("Polizei");
+            comboBox.addItem("Räuber");
+            comboBox.addItem("Feuerwehr");
+            comboBox.select("Räuber");
+            components.Add(comboBox);
 
             Group group = new Group(this, "group1");
             //TODO: kritisch unschön vielleicht besser wenn gruop einen eigenen EventHandlerManager bekommt?
@@ -167,6 +174,8 @@ namespace de.yaxgl
         }
 
 
+        
+        //eventuell nur window oder abstract so dass eine Gruppe auch einen Namen bekommt der dann oben links angezeigt wird
         /*returns the container title**/
         public string getTitle()
         {
