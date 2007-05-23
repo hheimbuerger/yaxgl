@@ -36,7 +36,7 @@ public class Window extends JFrame {
 		eventHandlerManager.registerEventHandlers(eventReceiver);
 	}
 
-	void notifyClickEvent(Button button, EventType type) {
+	public void notifyClickEvent(Button button, EventType type) {
 		eventHandlerManager.invokeHandlers(button, type);
 	}
 }
