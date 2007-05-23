@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>YAXGL - Yet Another XML GUI Language</title>
+		<link rel="stylesheet" type="text/css" href="yaxgl.css"/>
+	</head>
+	<body>
+        <div id="index">
+            <img src="Logo.png" width="197" height="131" />
+            <p class="tagline">Tagline goes here.</p>
+        
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#history">Project history and state</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="#developers">Developers</a></li>
+            </ul>
+            
+            <p class="release">
+                Current versions:<br/>
+                SWT/Java: <br/>
+                <strong>unreleased</strong><br/>
+                Windows Forms/.NET:<br/>
+                <strong>unreleased</strong><br/>
+                wxWidgets/Python:<br/>
+                <strong>unreleased</strong>
+            </p>
+        </div>
+        
+    
+    
+        <div id="content">
+            <h1 id="overview" class="first">Overview</h1>
+            <p>YAXGL is a both an XML-file specification and a set of libraries implementing support for the format. YAXGL can be used to create graphical user interfaces (GUI) by writing XML files and then letting the libraries create the actual GUI at runtime for you. The advantages of this approach to creating a GUI over the classic approach of defining the GUI directly in the programming language are:</p>
+            <ul>
+                <li>Platform and language independence (the GUI definitions are completely independent of the language and plattform, the APIs are as similar as possible)</li>
+                <li>Improved maintainabilty (by separating presentation and business logic, GUI designers and ergonomics experts can create and maintain GUIs without knowing any programming languages and a YAXGL file is much easier to understand to a human than framework-specific source code)</li>
+                <li>Easier reusability (the GUI definitions are independent of any application-specific code and much easier to understand to a human than framework-specific source code)</li>
+            </ul>
+
+            <p>And if you're using language or platform dependent GUI files (like the resource files used in the Windows API):</p>
+            <ul>
+                <li>Simplified readability (being just XML files, YAXGL definitions can be viewed and edited with any text editor)</li>
+                <li>Vendor independence (being just a wrapper, switching to another GUI framework is a lot easier than rewriting the whole code)</li>
+            </ul>
+
+            <p>YAXGL stands for "Yet Another XML GUI language" and is an innuendo to the multitude of XML GUI languages being released recently, most of which are neither usable in real life applications nor bring any new functionality to the field. YAXGL is no exception in this respect.</p>
+            
+            
+            
+            <h1 id="concept">Concept</h1>
+            <p>YAXGL libraries are wrappers on top of existing GUI frameworks. The following frameworks are currently supported:</p>
+            <ul>
+                <li>The <a href="http://www.eclipse.org/swt/">Standard Widget Toolkit</a> (SWT) using Java.</li>
+                <li><a href="http://msdn2.microsoft.com/en-us/netframework/aa497342.aspx">Windows Forms</a> using any .NET language (the library is written in C#).</li>
+                <li><a href="http://www.wxwidgets.org/">xwWidgets</a> (former wxWindows) using Python.</li>
+            </ul>
+            <p>The libraries allow to create windows from YAXGL files and then access and manipulate their properties and their controls' properties. To provide static checking, YAXGL files can be validated against their XML Schema.</p>
+            <p>YAXGL implements a subset of the features of these frameworks. More specifically, it provides the basic aspects of the most common controls. To allow extended functionality, it provides access to the native windows and controls.</p>
+            <p>Functions in the application-specific code can be made event handlers for one or more controls and event types by marking the function with specific metadata in the code (<a href="http://en.wikipedia.org/wiki/Java_annotation">Java Annotations</a> / <a href="http://en.wikipedia.org/wiki/.NET_metadata#Attributes">.NET Attributes</a> / <a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators">Python function decorators</a>).</p>
+            <p>All libraries are supposed to be as similar as possible, varying only in the syntax of the language itself. All class names, methods and the general usage concepts are the same among all YAXGL libraries.</p>
+            
+            
+            
+            <h1 id="history">Project history and state</h1>
+            <p>YAXGL is currently being created as a project for an XML class at the <a href="http://www.htwg-konstanz.de/">HTWG Konstanz</a> in the summer term 2007.</p>
+            
+            
+            
+            <h1 id="downloads">Downloads</h1>
+            <ul>
+                <li><a href="downloads/Introduction_to_YAXGL.pdf">Introductory presentation (PDF)</a> (German)</li>
+                <li><a href="schema/yaxgl/1.0/">XML Schemas</a></li>
+            </ul>
+            
+            
+            
+            <h1 id="developers">Developers</h1>
+            <p>Florian Roth<br/>
+               Stefanos Papadopoulos<br/>
+               Henrik Heimbuerger <a href="mailto:henrik@heimbuerger.de"><img src="IconEMail.png" width="17" height="12"/></a> <a href="http://henrik.heimbuerger.de/en/"><img src="IconHomepage.png" width="12" height="15"/></a></p>
+               
+        </div>
+	</body>
+</html>
