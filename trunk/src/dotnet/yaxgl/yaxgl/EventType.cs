@@ -7,7 +7,8 @@ namespace de.yaxgl
     
     public enum EventType
     {
-        CLICK,
-        FOCUS,
+        Click,
+        Focus,
+        SelectionChanged,
     }
 }

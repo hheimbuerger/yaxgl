@@ -13,14 +13,18 @@ namespace de.yaxgl
 
         public void clickEvent(object sender, System.EventArgs e)
         {
-            owner.notifyEvent(this, new EventArgs(EventType.CLICK, this.ID));
+            owner.notifyEvent(this, new EventArgs(EventType.Click, this.ID));
         }
 
         public void focusEvent(object sender, System.EventArgs e)
         {
-            owner.notifyEvent(this,new EventArgs(EventType.FOCUS, this.ID));
+            owner.notifyEvent(this,new EventArgs(EventType.Focus, this.ID));
         }
-
+        
+        public void selectionChangedEvent(object sender, System.EventArgs e)
+        {
+            owner.notifyEvent(this, new EventArgs(EventType.SelectionChanged, this.ID));
+        }
 
         public string getLabel()
         {
