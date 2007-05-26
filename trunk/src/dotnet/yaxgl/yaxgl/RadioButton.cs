@@ -25,6 +25,16 @@ namespace de.yaxgl
         {
             return ((System.Windows.Forms.RadioButton)this.control).Checked;
         }
-    
+       
+        public string getLabel()
+        {
+            return this.control.Text;
+        }
+
+        public void setLabel(string label)
+        {
+            this.control.Text = label;
+        }
+
     }
 }

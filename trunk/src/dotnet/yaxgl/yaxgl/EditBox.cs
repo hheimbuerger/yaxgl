@@ -14,9 +14,18 @@ namespace de.yaxgl
             this.control = new System.Windows.Forms.TextBox();
             this.control.GotFocus += new System.EventHandler(focusEvent);
             //this.control.Leave += new System.EventHandler(leaveEvent);
-            
         }
 
+        public void setText(string text)
+        {
+            this.control.Text = text;
+        }
+
+        public string getText()
+        {
+            return this.control.Text;
+        }
+        
         public void setMaxLength(int length) 
         {
             ((System.Windows.Forms.TextBox)this.control).MaxLength = length;

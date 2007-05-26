@@ -1,30 +1,36 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Xml;
 namespace de.yaxgl
 {
-    //TODO:SET LABEL ja oder nein
+    //TODO: we need an other name for group
     public class Group : Container,Containable
     {
-        Container owner = null;
+        private Container owner = null;
         
-        public Group(Container owner,string ID)
+        public Group(string xmlfile,Container owner,string ID)
         {
             this.owner = owner;
             this.ID = ID;
             this.control = new System.Windows.Forms.Panel();
+            
+            XmlDocument xmlDocument = new XmlDocument();
 
-            //System.Windows.Forms.GroupBox b = new System.Windows.Forms.GroupBox();
-            //parseXML(filename);
-            parseXMLG("");
-            System.Console.WriteLine("Soviele:" + this.components.Count);
+            //TODO: Exception
+            xmlDocument.Load(xmlfile);
+            XmlElement rootElement = xmlDocument.DocumentElement;
+
+            parseXML(rootElement);
+            
+            //register GroupEvents
+
             initialiceContainer();
         }
 
-        public System.Windows.Forms.Control getBaseControl()
+        public override void notifyEvent(Component control, EventArgs eventArgs)
         {
-            return this.control;
+            owner.notifyEvent(control, eventArgs);    
         }
 
         /* setting border to group true=border false=noneborder*/

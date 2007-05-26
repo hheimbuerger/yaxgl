@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using de.yaxgl;
 
+/*
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
 namespace TestApplication
 {
     public class Start
@@ -24,26 +31,26 @@ namespace TestApplication
         
         public static void Main()
         {
-            Start s = new Start(@"c:\test.xml");
+            Start s = new Start("c:\\test.xml");
         }
 
         
         
-        [de.yaxgl.EventHandler(EventType.Click,"Button1")]
+        [de.yaxgl.EventHandler(EventType.Click,"button1")]
         public void clickButton1(Component sender,de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.Button)sender).getLabel() + "\n" + args.ToString());
         }
 
 
-        [de.yaxgl.EventHandler(EventType.Focus, "Button1")]
+        [de.yaxgl.EventHandler(EventType.Focus, "button1")]
         public void focusButton1(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine(((de.yaxgl.Button)sender).getLabel() + " has focus");
         }
 
 
-        [de.yaxgl.EventHandler(EventType.Click, "Label1")]
+        [de.yaxgl.EventHandler(EventType.Click, "label1")]
         public void clickLabel1(Component sender, de.yaxgl.EventArgs args)
         {
             try
@@ -56,7 +63,7 @@ namespace TestApplication
             }
         }
 
-
+        /*
         [de.yaxgl.EventHandler(EventType.Click, "CheckBox1")]
         public void clickCheckBoxSex(Component sender, de.yaxgl.EventArgs args)
         {
@@ -79,8 +86,11 @@ namespace TestApplication
         [de.yaxgl.EventHandler(EventType.SelectionChanged, "comboBox")]
         public void selectionChanged(Component sender, de.yaxgl.EventArgs args)
         {
-            System.Console.WriteLine("Label: " + ((de.yaxgl.ComboBox)sender).getLabel() + "\n" + args.ToString());
             System.Console.WriteLine(((de.yaxgl.ComboBox)sender).getSelectedItem());
         }
+    
+         * 
+         * 
+         * */
     }
 }

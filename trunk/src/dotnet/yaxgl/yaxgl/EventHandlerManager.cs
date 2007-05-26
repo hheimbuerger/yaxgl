@@ -5,7 +5,6 @@ using System.Reflection;
 
 namespace de.yaxgl
 {
-    //Eventuell den als Singelton????
     public class EventHandlerManager
     {
         IList<EventHandlerMethod> eventHandlerMethods = null;
