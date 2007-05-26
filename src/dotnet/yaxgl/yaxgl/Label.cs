@@ -14,6 +14,16 @@ namespace de.yaxgl
             this.control = new System.Windows.Forms.Label();
             this.control.Click += new System.EventHandler(clickEvent);
         }
-    
+
+        public string getLabel()
+        {
+            return this.control.Text;
+        }
+
+        public void setLabel(string label)
+        {
+            this.control.Text = label;
+        }
+
     }
 }

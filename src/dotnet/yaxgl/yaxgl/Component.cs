@@ -18,6 +18,7 @@ namespace de.yaxgl
         {
             this.control.SetBounds(xpos, ypos, width, height);
         }
+
         public Dimension getDimension()
         {
             return new Dimension(this.control.Width, this.control.Height);
@@ -28,5 +29,13 @@ namespace de.yaxgl
             this.control.Width = dimension.getWidth();
             this.control.Height = dimension.getHeight();
         }
+        
+        /*returns the Specific Base Control of an de.yaxgl.Containable (Control and Group)
+         * */
+        public System.Windows.Forms.Control getNativeComponent()
+        {
+            return this.control;
+        }
+
      }
 }

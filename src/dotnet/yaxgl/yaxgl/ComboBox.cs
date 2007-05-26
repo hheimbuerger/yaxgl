@@ -12,8 +12,9 @@ namespace de.yaxgl
             this.ID = ID;
             this.control = new System.Windows.Forms.ComboBox();
             ((System.Windows.Forms.ComboBox)this.control).DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.control.GotFocus += new System.EventHandler(focusEvent);
+            
             /*registered events*/
+            this.control.GotFocus += new System.EventHandler(focusEvent);
             ((System.Windows.Forms.ComboBox)this.control).SelectionChangeCommitted += new System.EventHandler(selectionChangedEvent);
         }
 
@@ -43,15 +44,10 @@ namespace de.yaxgl
             }
         }
         
-
-
         public string getSelectedItem()
         {
             System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
             return (string)comboBox.SelectedItem;
         }
-        
-
-
     }
 }// END NAMESPACE

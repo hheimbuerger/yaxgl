@@ -10,7 +10,7 @@ namespace de.yaxgl
         
         //public abstract void setVisible(bool visible);
         //public abstract bool isVisible();
-
+        
         public void clickEvent(object sender, System.EventArgs e)
         {
             owner.notifyEvent(this, new EventArgs(EventType.Click, this.ID));
@@ -26,18 +26,6 @@ namespace de.yaxgl
             owner.notifyEvent(this, new EventArgs(EventType.SelectionChanged, this.ID));
         }
 
-        public string getLabel()
-        {
-            return this.control.Text;
-        }
-
-        public void setLabel(string label)
-        {
-            this.control.Text = label;
-        }
-
-        
-
         public void setEnabled(bool enabled)
         {
             this.control.Enabled = enabled;
@@ -46,11 +34,6 @@ namespace de.yaxgl
         public bool isEnabled()
         {
             return this.control.Enabled;
-        }
-        
-        public System.Windows.Forms.Control getBaseControl()
-        {
-            return this.control;
-        }
+        }   
     }
 }
