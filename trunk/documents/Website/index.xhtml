@@ -7,26 +7,32 @@
 	</head>
 	<body>
         <div id="index">
-            <img src="Logo.png" width="197" height="131" />
+            <img class="logo" src="Logo.png" width="197" height="131" alt="logo" />
             <p class="tagline">Tagline goes here.</p>
         
             <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#history">Project history and state</a></li>
-                <li><a href="#downloads">Downloads</a></li>
-                <li><a href="#developers">Developers</a></li>
+                <li><a href="#overview" class="menuitem">Overview</a></li>
+                <li><a href="#concept" class="menuitem">Concept</a></li>
+                <li><a href="#history" class="menuitem">Project history and state</a></li>
+                <li><a href="#downloads" class="menuitem">Downloads</a></li>
+                <li><a href="#developers" class="menuitem">Developers</a></li>
             </ul>
             
             <p class="release">
                 Current versions:<br/>
+                <br/>
+                Schema definitions:<br/>
+                &nbsp;&nbsp;&nbsp;<strong>0.1 (transient)</strong><br/>
                 SWT/Java: <br/>
-                <strong>unreleased</strong><br/>
+                &nbsp;&nbsp;&nbsp;<strong>unreleased</strong><br/>
                 Windows Forms/.NET:<br/>
-                <strong>unreleased</strong><br/>
+                &nbsp;&nbsp;&nbsp;<strong>unreleased</strong><br/>
                 wxWidgets/Python:<br/>
-                <strong>unreleased</strong>
+                &nbsp;&nbsp;&nbsp;<strong>unreleased</strong>
             </p>
+            
+            <a href="http://validator.w3.org/check?uri=referer"><img class="validation" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+            
         </div>
         
     
@@ -36,7 +42,7 @@
             <p>YAXGL is a both an XML-file specification and a set of libraries implementing support for the format. YAXGL can be used to create graphical user interfaces (GUI) by writing XML files and then letting the libraries create the actual GUI at runtime for you. The advantages of this approach to creating a GUI over the classic approach of defining the GUI directly in the programming language are:</p>
             <ul>
                 <li>Platform and language independence (the GUI definitions are completely independent of the language and plattform, the APIs are as similar as possible)</li>
-                <li>Improved maintainabilty (by separating presentation and business logic, GUI designers and ergonomics experts can create and maintain GUIs without knowing any programming languages and a YAXGL file is much easier to understand to a human than framework-specific source code)</li>
+                <li>Improved maintainabilty (by separating presentation and business logic, GUI designers and ergonomics experts can create and maintain GUIs without being trained in any programming languages)</li>
                 <li>Easier reusability (the GUI definitions are independent of any application-specific code and much easier to understand to a human than framework-specific source code)</li>
             </ul>
 
@@ -53,9 +59,9 @@
             <h1 id="concept">Concept</h1>
             <p>YAXGL libraries are wrappers on top of existing GUI frameworks. The following frameworks are currently supported:</p>
             <ul>
-                <li>The <a href="http://www.eclipse.org/swt/">Standard Widget Toolkit</a> (SWT) using Java.</li>
-                <li><a href="http://msdn2.microsoft.com/en-us/netframework/aa497342.aspx">Windows Forms</a> using any .NET language (the library is written in C#).</li>
-                <li><a href="http://www.wxwidgets.org/">xwWidgets</a> (former wxWindows) using Python.</li>
+                <li>The <a href="http://www.eclipse.org/swt/">Standard Widget Toolkit</a> (SWT) using Java or any other langauge compiling to code for the Java Virtual Machine (Groovy, ...).</li>
+                <li><a href="http://msdn2.microsoft.com/en-us/netframework/aa497342.aspx">Windows Forms</a> using any CLR (.NET) language (C#, VB.NET, Boo, ...).</li>
+                <li><a href="http://www.wxwidgets.org/">xwWidgets</a> (formerly wxWindows) using Python.</li>
             </ul>
             <p>The libraries allow to create windows from YAXGL files and then access and manipulate their properties and their controls' properties. To provide static checking, YAXGL files can be validated against their XML Schema.</p>
             <p>YAXGL implements a subset of the features of these frameworks. More specifically, it provides the basic aspects of the most common controls. To allow extended functionality, it provides access to the native windows and controls.</p>
@@ -71,16 +77,16 @@
             
             <h1 id="downloads">Downloads</h1>
             <ul>
-                <li><a href="downloads/Introduction_to_YAXGL.pdf">Introductory presentation (PDF)</a> (German)</li>
-                <li><a href="schema/yaxgl/1.0/">XML Schemas</a></li>
+                <li><a href="downloads/Einfuehrung_in_YAXGL.pdf">Introductory presentation (PDF)</a> (German)</li>
+                <li><a href="schema/yaxgl/1.0/">XML Schema definition</a></li>
             </ul>
             
             
             
             <h1 id="developers">Developers</h1>
-            <p>Florian Roth<br/>
+            <p>Florian Roth <a href="mailto:fro23@gmx.de"><img src="IconEMail.png" width="17" height="12" alt="e-mail" /></a><br/>
                Stefanos Papadopoulos<br/>
-               Henrik Heimbuerger <a href="mailto:henrik@heimbuerger.de"><img src="IconEMail.png" width="17" height="12"/></a> <a href="http://henrik.heimbuerger.de/en/"><img src="IconHomepage.png" width="12" height="15"/></a></p>
+               Henrik Heimbuerger <a href="mailto:henrik@heimbuerger.de"><img src="IconEMail.png" width="17" height="12" alt="e-mail" /></a> <a href="http://henrik.heimbuerger.de/en/"><img src="IconHomepage.gif" width="12" height="15" alt="website"/></a></p>
                
         </div>
 	</body>
