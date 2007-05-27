@@ -20,7 +20,7 @@ body {
     float: left;
     width: 230px;
 }
-#index img {
+#index img.logo {
     margin: 0px 0px 0px 10px;
 }
 #index p.tagline {
@@ -44,7 +44,7 @@ body {
     /*der abstand zw den menupunkten kann wegen dem ie nicht mit margin gesetzt werden*/
     margin:0;
 }
-#index a {
+#index a.menuitem {
     width:140px;
     /*die breitenangabe wir nur vom ie benoetigt*/
     display:block;
@@ -56,10 +56,15 @@ body {
     font-size:12px;
     text-decoration:none;
 }
-#index a:hover {
+#index a.menuitem:hover {
     color:black;
     background:#39a3be;
     border:1px solid black;
+}
+#index img.validation {
+    border: 0px;
+    margin-top: 100px;
+    margin-left: 30px;
 }
 
 
