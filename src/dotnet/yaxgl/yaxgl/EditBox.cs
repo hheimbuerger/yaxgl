@@ -12,8 +12,9 @@ namespace de.yaxgl
             this.ID = ID;
 
             this.control = new System.Windows.Forms.TextBox();
-            this.control.GotFocus += new System.EventHandler(focusEvent);
-            //this.control.Leave += new System.EventHandler(leaveEvent);
+            this.control.Click += new System.EventHandler(clickEvent);
+            this.control.GotFocus += new System.EventHandler(gotFocusEvent);
+            this.control.LostFocus += new System.EventHandler(lostFocusEvent);
         }
 
         public void setText(string text)
@@ -36,34 +37,5 @@ namespace de.yaxgl
         {
             return  ((System.Windows.Forms.TextBox)this.control).MaxLength;
         }
-        
-        
-        public void setMultiline(bool multiline)
-        {
-            System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)this.control;
-            //setting multiline
-            textBox.Multiline=multiline;
-            // Allow the RETURN key to be entered in the TextBox control.
-            textBox.AcceptsReturn = multiline;
-            // Allow the TAB key to be entered in the TextBox control.
-            textBox.AcceptsTab = multiline;
-            // Set WordWrap to True to allow text to wrap to the next line.
-            textBox.WordWrap = multiline;
-            if (multiline)
-            {
-                // Add vertical scroll bars to the TextBox control.
-                textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            }
-            else
-            {
-                textBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            }
-        }
-
-        public bool isMultiline()
-        {
-            return ((System.Windows.Forms.TextBox)this.control).Multiline;
-        }
-    
     }
 }

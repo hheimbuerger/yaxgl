@@ -8,17 +8,20 @@ namespace de.yaxgl
     {
         protected Container owner = null;
         
-        //public abstract void setVisible(bool visible);
-        //public abstract bool isVisible();
         
         public void clickEvent(object sender, System.EventArgs e)
         {
             owner.notifyEvent(this, new EventArgs(EventType.Click, this.ID));
         }
 
-        public void focusEvent(object sender, System.EventArgs e)
+        public void gotFocusEvent(object sender, System.EventArgs e)
         {
-            owner.notifyEvent(this,new EventArgs(EventType.Focus, this.ID));
+            owner.notifyEvent(this,new EventArgs(EventType.GotFocus, this.ID));
+        }
+
+        public void lostFocusEvent(object sender, System.EventArgs e)
+        {
+            owner.notifyEvent(this, new EventArgs(EventType.LostFocus, this.ID));
         }
         
         public void selectionChangedEvent(object sender, System.EventArgs e)

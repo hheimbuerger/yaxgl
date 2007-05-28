@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-
+using System.Text.RegularExpressions;
 namespace de.yaxgl
 {
 
@@ -10,20 +10,31 @@ namespace de.yaxgl
     {
         private Object eventReciever;
         private MethodInfo methodInfo;
-        private EventArgs eventArgs;
+        private EventType eventType;
+        private Regex eventID;
 
-        public EventHandlerMethod(Object eventReciever, MethodInfo methodInfo, EventArgs eventArgs)
+        public EventHandlerMethod(Object eventReciever, MethodInfo methodInfo, EventType eventType,string eventID)
         {
             this.eventReciever = eventReciever;
             this.methodInfo = methodInfo;
-            this.eventArgs = eventArgs;
+            this.eventType = eventType;
+            this.eventID = new Regex("^"+eventID+"$");
         }
 
 
-        public bool isMatching(EventArgs eventArgs)
+        public bool isMatching(string eventID)
         {
-            if (eventArgs == this.eventArgs) return true;
-            else return false;
+            Match m = this.eventID.Match(eventID);
+            return m.Success;
+        }
+
+        public bool isTypeOf(EventType eventType)
+        {
+            if (this.eventType == eventType)
+                return true;
+            else
+                return false;
+        
         }
 
         public void invokeMethod(Component component, EventArgs eventArgs)
