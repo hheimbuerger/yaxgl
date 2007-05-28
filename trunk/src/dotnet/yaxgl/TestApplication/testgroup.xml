@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<yaxgl:group xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				height="200" width="400" 
+				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_group.xsd">
+<yaxgl:label id="label2" label="Group" height="20" width="100" xpos="0" ypos="0"></yaxgl:label>
+<yaxgl:textbox height="150" xpos="0" id="textbox1" ypos="20" width="300" text="Hallo
+Flo" maxlength="200"></yaxgl:textbox>				
+</yaxgl:group>
