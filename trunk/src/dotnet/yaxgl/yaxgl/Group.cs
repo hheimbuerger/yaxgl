@@ -24,7 +24,7 @@ namespace de.yaxgl
             parseXML(rootElement);
             
             //register GroupEvents
-
+            
             initialiceContainer();
         }
 

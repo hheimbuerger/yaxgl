@@ -18,8 +18,8 @@ namespace de.yaxgl
         
         public Dimension(int width,int height)
         {
-            this.height = width;
-            this.width = height;
+            this.height = height;
+            this.width = width;
         }
         
         public void setHeight(int height)

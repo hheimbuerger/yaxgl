@@ -48,34 +48,36 @@ namespace de.yaxgl
          * */
         protected void parseXML(XmlElement rootElement)
         {
-            if (rootElement.Name.Equals("yaxgl:window") || rootElement.Name.Equals("yaxgl:groupbox"))
+            
+            /*set container options from cml atributes here*/
+            if (rootElement.Name.Equals("yaxgl:window"))
             {
                 this.ID = rootElement.Attributes["id"].InnerText;
                 this.setBounds(Convert.ToInt32(rootElement.Attributes["xpos"].InnerText), Convert.ToInt32(rootElement.Attributes["ypos"].InnerText),
                     Convert.ToInt32(rootElement.Attributes["width"].InnerText), Convert.ToInt32(rootElement.Attributes["height"].InnerText));
                 ((Window)this).setTitle(rootElement.Attributes["title"].InnerText);
             }
+            else if (rootElement.Name.Equals("yaxgl:group"))
+            { 
+                Dimension dimension=new Dimension(Convert.ToInt32(rootElement.Attributes["width"].InnerText),
+                    Convert.ToInt32(rootElement.Attributes["height"].InnerText));
+                this.setDimension(dimension);
+            }
             
-            foreach (XmlNode xmlNode in rootElement)
+            /*go through all child elements create them and add them to the container*/
+            foreach (XmlNode xmlNode in rootElement.ChildNodes)
             {
                 XmlElement xmlElement;
                 if (xmlNode.NodeType == XmlNodeType.Element)
                 {
                     xmlElement = (XmlElement)xmlNode;
-                    System.Console.WriteLine(xmlElement.Name);
-
+                    
                     Containable newContainable = SimpleComponentFactory.createComponent(this, xmlElement);
                     if(newContainable!=null)
                         components.Add(((Component)newContainable).getID(),newContainable);
                 }
             }
-         
-
         }
-
-        
-              
-        
     }
 }
 

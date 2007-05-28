@@ -51,11 +51,15 @@
     <Compile Include="EventHandler.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="GroupBox.cs" />
+    <Compile Include="ImageBox.cs" />
     <Compile Include="Label.cs" />
+    <Compile Include="ListBox.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadioButton.cs" />
     <Compile Include="SimpleComponentFactory.cs" />
+    <Compile Include="TextBox.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="WindowManager.cs" />
   </ItemGroup>

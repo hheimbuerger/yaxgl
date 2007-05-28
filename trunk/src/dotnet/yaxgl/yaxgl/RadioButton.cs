@@ -11,8 +11,10 @@ namespace de.yaxgl
             this.owner = owner;
             this.ID = ID;
             this.control = new System.Windows.Forms.RadioButton();
+            /*register events*/
             this.control.Click += new System.EventHandler(clickEvent);
-            this.control.GotFocus += new System.EventHandler(focusEvent);
+            this.control.GotFocus += new System.EventHandler(gotFocusEvent);
+            this.control.LostFocus += new System.EventHandler(lostFocusEvent);
         }
 
         public void setChecked(bool checkedState)
