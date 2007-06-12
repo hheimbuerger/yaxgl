@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Text.RegularExpressions;
 namespace de.yaxgl
+
 {
 
     public class EventHandlerMethod
@@ -11,21 +12,34 @@ namespace de.yaxgl
         private Object eventReciever;
         private MethodInfo methodInfo;
         private EventType eventType;
-        private Regex eventID;
+        private string eventID;
+        private bool regexOn;
 
-        public EventHandlerMethod(Object eventReciever, MethodInfo methodInfo, EventType eventType,string eventID)
+        public EventHandlerMethod(Object eventReciever, MethodInfo methodInfo, EventType eventType,string eventID,bool regexOn)
         {
             this.eventReciever = eventReciever;
             this.methodInfo = methodInfo;
             this.eventType = eventType;
-            this.eventID = new Regex("^"+eventID+"$");
+            this.eventID = eventID;
+            this.regexOn = regexOn;
+                //new Regex("^"+eventID+"$");
         }
 
-
+        
         public bool isMatching(string eventID)
         {
-            Match m = this.eventID.Match(eventID);
-            return m.Success;
+            bool retVal;
+            if (regexOn)
+            {
+                Regex eventIDRegex = new Regex("^" + this.eventID + "$");
+                Match m = eventIDRegex.Match(eventID);
+                retVal = m.Success;
+            }
+            else 
+            {
+                retVal=this.eventID.Equals(eventID);   
+            }
+            return retVal;
         }
 
         public bool isTypeOf(EventType eventType)

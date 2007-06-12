@@ -88,14 +88,14 @@ namespace TestApplication
         //[de.yaxgl.EventHandler(EventType.Click, "radio1")]
         //[de.yaxgl.EventHandler(EventType.Click, "radio2")]
         //or you can use regex
-        [de.yaxgl.EventHandler(EventType.Click, "radio\\d")]
+        [de.yaxgl.EventHandler(EventType.Click, "radio\\d",true)]
         public void radioKKlickChanged(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine(((de.yaxgl.RadioButton)sender).getLabel());
         }
 
 
-        [de.yaxgl.EventHandler(EventType.GotFocus, ".*")]
+        [de.yaxgl.EventHandler(eventType = EventType.GotFocus, eventID = ".*",regexOn=true)]
         public void somethingClicked(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Something new got focus");
