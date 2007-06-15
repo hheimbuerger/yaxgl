@@ -23,7 +23,7 @@ namespace de.yaxgl
             
             //TODO:register GroupEvents
             
-            initialiceContainer();
+            initializeContainer();
         }
 
         public override void notifyEvent(Component control, EventArgs eventArgs)

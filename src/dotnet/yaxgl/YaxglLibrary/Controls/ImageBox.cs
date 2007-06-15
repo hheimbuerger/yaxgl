@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace de.yaxgl
 {
@@ -18,7 +19,7 @@ namespace de.yaxgl
 
         public void loadImage(string fileImage)
         {
-            ((System.Windows.Forms.PictureBox)this.control).Load(fileImage);
+            ((System.Windows.Forms.PictureBox)this.control).Load(Application.StartupPath + "/" + fileImage);
         }
 
     }
