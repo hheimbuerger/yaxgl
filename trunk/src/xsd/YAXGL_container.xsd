@@ -83,15 +83,13 @@
 	</xsd:complexType>
 	<!-- A groupref control, adds a source XML filename to the ControlType base. -->
 	<xsd:complexType name="GrouprefType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="source" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
+        <xsd:attributeGroup ref="yaxgl:IDGroup"/>
+        <xsd:attribute name="xpos" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="ypos" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="source" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
 	<xsd:complexType name="ComboboxItem">
-		<xsd:attributeGroup ref="yaxgl:IDGroup"/>
 		<xsd:attribute name="label" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="ComboboxType">
@@ -106,7 +104,6 @@
 	</xsd:complexType>
 	<!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
 	<xsd:complexType name="ListboxItem">
-		<xsd:attributeGroup ref="yaxgl:IDGroup"/>
 		<xsd:attribute name="label" type="xsd:string" use="required"/>
 		<xsd:attribute name="selected" type="xsd:boolean" use="optional"/>
 	</xsd:complexType>
@@ -120,7 +117,28 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	<!-- the window -->
+	<!-- A groupbox control, adds a title attribute and the ability to contain arbitrary controls. -->
+	<xsd:complexType name="GroupboxType">
+		<xsd:complexContent>
+			<xsd:extension base="yaxgl:ControlType">
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element name="button" type="yaxgl:ButtonType" minOccurs="0"/>
+                    <xsd:element name="checkbox" type="yaxgl:CheckboxType" minOccurs="0"/>
+                    <xsd:element name="label" type="yaxgl:LabelType" minOccurs="0"/>
+                    <xsd:element name="radiogroup" type="yaxgl:RadiogroupType" minOccurs="0"/>
+                    <xsd:element name="editbox" type="yaxgl:EditboxType" minOccurs="0"/>
+                    <xsd:element name="textbox" type="yaxgl:TextboxType" minOccurs="0"/>
+                    <xsd:element name="imagebox" type="yaxgl:ImageboxType" minOccurs="0"/>
+                    <xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0"/>
+                    <xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0"/>
+                    <xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0"/>
+                    <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0"/>
+                </xsd:sequence>
+                <xsd:attribute name="title" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- the container -->
 	<xsd:complexType name="ContainerType" abstract="true">
 		<xsd:annotation>
 			<xsd:documentation>Represents a container of some sort, will be subclassed to 'window' and 'group'</xsd:documentation>
@@ -136,6 +154,7 @@
 			<xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0"/>
 			<xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0"/>
 			<xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0"/>
+            <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0"/>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
