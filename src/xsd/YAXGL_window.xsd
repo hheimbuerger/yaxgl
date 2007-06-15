@@ -10,19 +10,25 @@
 		</xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="yaxgl:ContainerType">
+                <xsd:attributeGroup ref="yaxgl:IDGroup"/>
 				<xsd:attribute name="title" type="xsd:string"/>
 				<xsd:attribute name="xpos" type="xsd:unsignedShort"/>
 				<xsd:attribute name="ypos" type="xsd:unsignedShort"/>
 				<xsd:attribute name="width" type="xsd:positiveInteger"/>
 				<xsd:attribute name="height" type="xsd:positiveInteger"/>
+                <xsd:attribute name="icon" type="xsd:string" use="optional"/>
+                <xsd:attribute name="minimizeBox" type="xsd:boolean" use="optional" default="true"/>
+                <xsd:attribute name="showInTaskbar" type="xsd:boolean" use="optional" default="true"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
 	<xsd:element name="window" type="yaxgl:WindowType">
-		<xsd:key name="ControlIDs">
+		<!--
+        <xsd:key name="ControlIDs">
 			<xsd:selector xpath=".//*"/>
 			<xsd:field xpath="@id"/>
 		</xsd:key>
+        -->
 		<!--
 		<xsd:keyref name="RadiogroupSelection" refer="yaxgl:ControlIDs">
 			<xsd:selector xpath=".//radiogroup"/>

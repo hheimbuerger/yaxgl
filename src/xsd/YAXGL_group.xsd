@@ -16,10 +16,12 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	<xsd:element name="group" type="yaxgl:GroupType">
+        <!--
 		<xsd:key name="ControlIDs">
 			<xsd:selector xpath=".//*"/>
 			<xsd:field xpath="@id"/>
 		</xsd:key>
+        -->
 		<!--
 		<xsd:keyref name="RadiogroupSelection" refer="yaxgl:ControlIDs">
 			<xsd:selector xpath=".//radiogroup"/>
