@@ -14,12 +14,6 @@ namespace de.yaxgl
         /*holder for Containable components*/
         protected IDictionary<string,Containable> components=new Dictionary<string,Containable>();
 
-
-        public static XmlElement getRootElementFromXmlFile(string filename)
-        {
-            return null;
-        }
-        
         
         /* notifys the EventHandlerManager for invoke incomming event from specific component or container*/
         public abstract void notifyEvent(Component control, EventArgs eventArgs);

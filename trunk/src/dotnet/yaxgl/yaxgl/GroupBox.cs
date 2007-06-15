@@ -15,6 +15,7 @@ namespace de.yaxgl
             this.ID = ID;
             this.control = new System.Windows.Forms.GroupBox();
             /*register events*/
+            
             parseXML(rootElement);
             /*init*/
             initialiceContainer();
