@@ -49,6 +49,7 @@
     <Content Include="Logo.png" />
     <Content Include="test.xml" />
     <Content Include="testgroup.xml" />
+    <Content Include="TestWindow_validation.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,16 +14,14 @@ namespace de.yaxgl
             this.owner = owner;
             this.ID = ID;
             this.control = new System.Windows.Forms.Panel();
-            
-            XmlDocument xmlDocument = new XmlDocument();
 
-            //TODO: Exception
-            xmlDocument.Load(xmlfile);
-            XmlElement rootElement = xmlDocument.DocumentElement;
+            XmlElement rootElement = null;
+
+            rootElement = validateXmlDocument(@"http://www.yaxgl.de/schema/yaxgl/1.0/", @"http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_group.xsd", xmlfile);
 
             parseXML(rootElement);
             
-            //register GroupEvents
+            //TODO:register GroupEvents
             
             initialiceContainer();
         }

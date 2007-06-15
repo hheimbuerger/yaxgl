@@ -42,7 +42,7 @@ namespace de.yaxgl
         }
        
 
-        /*returns the Specific Base Control of an de.yaxgl.Containable (Control and Group)
+        /*returns the Specific Native Control of an de.yaxgl.Containable (Control and Group)
          * */
         public System.Windows.Forms.Control getNativeComponent()
         {

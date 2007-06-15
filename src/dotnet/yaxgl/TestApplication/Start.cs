@@ -22,10 +22,9 @@ namespace TestApplication
         }
         
         
-        
         public static void Main()
         {
-            Start s = new Start(@"C:\workspace\wsYAXGL\xml-gui\src\dotnet\yaxgl\TestApplication\test.xml");
+            Start s = new Start(@"..\..\test.xml");
         }
         
         //you can use the attributes like this

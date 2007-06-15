@@ -3,17 +3,18 @@
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 				title="Controls Übersicht" xpos="600" ypos="600" height="400" width="600" id="window1"
 				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd">
-   <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="Groupbox">
-	   <yaxgl:radiobutton id="radio1" label="Radiobutton1" xpos="10" ypos="15" height="20" width="100" checked="true"></yaxgl:radiobutton>
-	   <yaxgl:radiobutton id="radio2" label="Radiobutton2" xpos="10" ypos="35" height="20" width="100"></yaxgl:radiobutton>
-   </yaxgl:groupbox>
-   <yaxgl:listbox id="listbox1" multiselect="true" xpos="350" ypos="120" height="100" width="200">
-				<yaxgl:item label="Listboxentry1" selected="true"></yaxgl:item>
-				<yaxgl:item label="Listboxentry2" selected="false"></yaxgl:item>	
-				<yaxgl:item label="Listboxentry3" selected="true"></yaxgl:item>		
-			</yaxgl:listbox>
-
+  
 <yaxgl:imagebox id="imagebox1" xpos="350" ypos="230" width="200" height="130" source="C:\workspace\wsYAXGL\xml-gui\src\dotnet\yaxgl\TestApplication\Logo.png" alternativeText="Bild nicht vorhanden"/>
+  <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="Groupbox">
+    <yaxgl:radiobutton id="radio1" label="Radiobutton1" xpos="10" ypos="15" height="20" width="100" checked="true"></yaxgl:radiobutton>
+    <yaxgl:radiobutton id="radio2" label="Radiobutton2" xpos="10" ypos="35" height="20" width="100"></yaxgl:radiobutton>
+  </yaxgl:groupbox>
+
+  <yaxgl:listbox id="listbox1" multiselect="true" xpos="350" ypos="120" height="100" width="200">
+    <yaxgl:item label="Listboxentry1" selected="true"></yaxgl:item>
+    <yaxgl:item label="Listboxentry2" selected="false"></yaxgl:item>
+    <yaxgl:item label="Listboxentry3" selected="true"></yaxgl:item>
+  </yaxgl:listbox>
 
   <yaxgl:label id="label1" xpos="10" ypos="10" height="20" width="100" label="Ich bin ein Label:"/>
   <yaxgl:button id="button1" label="Push me!" xpos="10" ypos="40" height="20" width="100"/>
