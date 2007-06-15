@@ -39,16 +39,15 @@
     <Compile Include="Start.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\yaxgl\yaxgl.csproj">
-      <Project>{698D31E9-4372-4F39-8B28-79DBA3D6AC92}</Project>
-      <Name>yaxgl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Logo.png" />
     <Content Include="test.xml" />
     <Content Include="testgroup.xml" />
-    <Content Include="TestWindow_validation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YaxglLibrary\YaxglLibrary.csproj">
+      <Project>{698D31E9-4372-4F39-8B28-79DBA3D6AC92}</Project>
+      <Name>YaxglLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
