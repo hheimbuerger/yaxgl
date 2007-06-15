@@ -4,9 +4,41 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.IO;
+using System.Reflection;
+using System.Net;
 
 namespace de.yaxgl
 {
+    /*
+    class MyXmlResolver : XmlResolver
+    {
+        private XmlSchemaSet schemaSet;
+
+        public MyXmlResolver(XmlSchemaSet schemaSet)
+        {
+            this.schemaSet = schemaSet;
+            Credentials = null;
+        }
+
+        public override ICredentials Credentials { set { } }
+
+        public override Object GetEntity(Uri absoluteUri, string role, Type ofObjectToReturn)
+        {
+            Console.WriteLine("absoluteUri: " + absoluteUri.ToString());
+            return (null);
+
+        }
+
+        public override Uri ResolveUri(Uri baseUri, string relativeUri)
+        {
+            Console.WriteLine("baseUri: " + baseUri.ToString());
+            Console.WriteLine("relativeUri: " + relativeUri.ToString());
+            return (null);
+        }
+
+    }
+     */
+
     //TODO: welche events sollen die container unterstützen?
     public abstract class Container : Component
     {
@@ -20,7 +52,7 @@ namespace de.yaxgl
         
 
         /*iterates over all Containables and adds the specific base controlls to the specific container**/
-        protected void initialiceContainer()
+        protected void initializeContainer()
         {
             foreach (KeyValuePair<string,Containable> containable in components)
             {
@@ -38,36 +70,62 @@ namespace de.yaxgl
             else return null;
         }
 
-        /* validates the xmlFile against the schamFile and returns the root element on success
+        public static void validationEventHandler(
+                Object sender,
+                ValidationEventArgs e
+            )
+        {
+            throw new XmlSchemaValidationException("Schema validation failed.", e.Exception);
+        }
+
+        /* validates the xmlFile against the schemaFile and returns the root element on success
          **/
         protected XmlElement validateXmlDocument(string urn, string schemafile,string xmlfile)
         {
             // Create the XmlSchemaSet class.
-            XmlSchemaSet xmlSchemaSet = new XmlSchemaSet();
+//            XmlSchemaSet xmlSchemaSet = new XmlSchemaSet();
 
             // Add the schema to the collection.
-            xmlSchemaSet.Add(urn, schemafile);
+            //xmlSchemaSet.Add(urn, schemafile);
 
             // Set the validation settings.
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
-            settings.Schemas = xmlSchemaSet;
-            
-            XmlDocument doc = new XmlDocument();
-            try
+            settings.XmlResolver = null; // new MyXmlResolver(null);
+
+            // Add the schemas.
+            string[] schemas = { "YAXGL_container.xsd", "YAXGL_window.xsd", "YAXGL_group.xsd" };
+            foreach (string schemaName in schemas)
             {
+                Stream schemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("de.yaxgl.XSDs." + schemaName);
+                XmlSchema xmlSchema = XmlSchema.Read(schemaStream, validationEventHandler);
+                settings.Schemas.Add(xmlSchema);
+            }
+            /*
+            Stream containerSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("de.yaxgl.XSDs.YAXGL_container.xsd");
+            Stream windowSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("de.yaxgl.XSDs.YAXGL_window.xsd");
+            Stream groupSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("de.yaxgl.XSDs.YAXGL_group.xsd");
+            //Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("YAXGL_window");
+            XmlSchema xmlSchema = XmlSchema.Read(stream, validationEventHandler);
+            xmlSchemaSet.Add(xmlSchema);
+             */
+
+
+            XmlDocument doc = new XmlDocument();
+            //try
+            //{
                 // Create the XmlReader object.
                 XmlReader reader = XmlReader.Create(xmlfile, settings);
                 doc.Load(reader);
-            }
-            catch (XmlSchemaValidationException e)
-            {
-                throw new XmlSchemaValidationException("Validation Error: "+ e.Message,e);
-            }
-            catch (FileNotFoundException ex)
-            {
-                throw new FileNotFoundException("File not found Error: {0}", ex.Message);
-            }
+            //}
+            //catch (XmlSchemaValidationException e)
+            //{
+            //    throw new XmlSchemaValidationException("Validation Error: "+ e.Message,e);
+            //}
+            //catch (FileNotFoundException ex)
+            //{
+            //    throw new FileNotFoundException("File not found Error: {0}", ex.Message);
+            //}
 
             return doc.DocumentElement;
         }

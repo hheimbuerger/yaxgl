@@ -18,7 +18,7 @@ namespace de.yaxgl
             
             parseXML(rootElement);
             /*init*/
-            initialiceContainer();
+            initializeContainer();
         }
 
         public override void notifyEvent(Component control, EventArgs eventArgs)

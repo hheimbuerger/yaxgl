@@ -25,7 +25,7 @@ namespace de.yaxgl
             /*register window events*/
             //form.Click+=new System.EventHandler(form_Click);
             
-            initialiceContainer();
+            initializeContainer();
         }
 
 
