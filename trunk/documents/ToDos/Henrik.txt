@@ -1,0 +1,44 @@
+==========================================================================================================
+===== To Do
+==========================================================================================================
+
+Python Library:
+- ...
+
+XML Schema:
+- ...
+
+Diverses:
+- XSD mit in DLL
+- defaults aus XSD?
+
+
+
+
+
+==========================================================================================================
+===== Notizen
+==========================================================================================================
+
+Themenueberblick / To Do:
+- Window-Styles
+- ggf. offene Fragen klaeren, fehlende Features ergaenzen
+- naechste Schritte festlegen
+- grob Praesentation planen 
+
+WindowManager: [Singleton]
+[constructor private]
+- initialize(BaseGUIFramework, LookAndFeel) [throws NotSupportedException]
+[all others throw NotInitializedException]
+- createWindow(XMLFile): Window [throws ValidationException, FileNotFoundException]
+- destroyWindow(Window): void [throws not found exception]
+- getWindowList(): IList<Window>
+- getVisibleWindowList(): IList<Window>
+- showModal(WindowToShow, ParentWindow): void [throws not found exception]
+- showNonModal(WindowToShow): void [throws not found exception]
+- hide(Window): void [throws not found exception]
+
+Window:
+[constructor private]
+- showModal(Window): void [throws not found exception]
+- close(): void
