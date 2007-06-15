@@ -35,33 +35,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckBox.cs" />
-    <Compile Include="ComboBox.cs" />
-    <Compile Include="EditBox.cs" />
-    <Compile Include="EventArgs.cs" />
-    <Compile Include="EventHandlerManager.cs" />
-    <Compile Include="EventHandlerMethod.cs" />
-    <Compile Include="EventType.cs" />
-    <Compile Include="Dimension.cs" />
-    <Compile Include="Button.cs" />
-    <Compile Include="Component.cs" />
-    <Compile Include="Containable.cs" />
-    <Compile Include="Container.cs" />
-    <Compile Include="Control.cs" />
-    <Compile Include="EventHandler.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="GroupBox.cs" />
-    <Compile Include="ImageBox.cs" />
-    <Compile Include="Label.cs" />
-    <Compile Include="ListBox.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Position.cs" />
+    <Compile Include="Base\Component.cs" />
+    <Compile Include="Base\Containable.cs" />
+    <Compile Include="Base\Control.cs" />
+    <Compile Include="Container\Container.cs" />
+    <Compile Include="Container\Group.cs" />
+    <Compile Include="Container\GroupBox.cs" />
+    <Compile Include="Container\Window.cs" />
+    <Compile Include="Container\WindowManager.cs" />
+    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\CheckBox.cs" />
+    <Compile Include="Controls\ComboBox.cs" />
+    <Compile Include="Controls\EditBox.cs" />
+    <Compile Include="Controls\ImageBox.cs" />
+    <Compile Include="Controls\Label.cs" />
+    <Compile Include="Controls\ListBox.cs" />
+    <Compile Include="Controls\RadioButton.cs" />
+    <Compile Include="Controls\TextBox.cs" />
+    <Compile Include="EventDispatcher\Attribute\EventHandler.cs" />
+    <Compile Include="EventDispatcher\Attribute\EventType.cs" />
+    <Compile Include="EventDispatcher\EventArgs.cs" />
+    <Compile Include="EventDispatcher\EventHandlerManager.cs" />
+    <Compile Include="EventDispatcher\EventHandlerMethod.cs" />
+    <Compile Include="Helper\Dimension.cs" />
+    <Compile Include="Helper\Location.cs" />
+    <Compile Include="Helper\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadioButton.cs" />
     <Compile Include="SimpleComponentFactory.cs" />
-    <Compile Include="TextBox.cs" />
-    <Compile Include="Window.cs" />
-    <Compile Include="WindowManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
