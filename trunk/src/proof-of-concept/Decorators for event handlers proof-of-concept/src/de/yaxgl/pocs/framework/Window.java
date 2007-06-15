@@ -28,7 +28,7 @@ public class Window extends JFrame {
 		setSize(640, 480);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+	
 		eventHandlerManager = new EventHandlerManager();
 	}
 
