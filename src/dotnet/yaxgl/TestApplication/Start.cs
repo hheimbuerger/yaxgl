@@ -21,7 +21,6 @@ namespace TestApplication
             winManager.createWindow(xmlFile, this).show();
         }
         
-        
         public static void Main()
         {
             Start s = new Start(@"..\..\test.xml");

@@ -11,6 +11,7 @@ namespace de.yaxgl
         public static Containable createComponent(Container owner,XmlElement xmlElement)
         {
             Containable component=null;
+            
             if (xmlElement.Name.Equals("yaxgl:button"))
             {
                 component = new Button(owner, xmlElement.Attributes["id"].InnerText);

@@ -20,6 +20,9 @@ namespace de.yaxgl
             this.control.LostFocus += new System.EventHandler(lostFocusEvent);
         }
         
+        
+        
+        
         public string getLabel()
         {
             return this.control.Text;
