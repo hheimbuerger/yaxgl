@@ -24,8 +24,6 @@ namespace de.yaxgl
 
             /*register window events*/
             //form.Click+=new System.EventHandler(form_Click);
-            
-            initializeContainer();
         }
 
         public override void initializeNativeControl(XmlElement xmlElement)
@@ -36,7 +34,19 @@ namespace de.yaxgl
                       Convert.ToInt32(xmlElement.Attributes["width"].InnerText), 
                       Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
             setTitle(xmlElement.Attributes["title"].InnerText);
-  
+            setIcon(xmlElement.Attributes["icon"].InnerText);
+            minimizeable(Boolean.Parse(xmlElement.Attributes["minimizeBox"].InnerText));
+            maximizeable(Boolean.Parse(xmlElement.Attributes["maximizeBox"].InnerText));
+            showInTaskbar(Boolean.Parse(xmlElement.Attributes["showInTaskbar"].InnerText));
+
+            string style = xmlElement.Attributes["borderStyle"].InnerText;
+
+            if (style == "fixed")
+                setBorderStyle(WindowStyle.Fixed);
+            else if (style == "none")
+                setBorderStyle(WindowStyle.None);
+            else 
+                setBorderStyle(WindowStyle.Sizeable);
         }
 
 
@@ -50,16 +60,44 @@ namespace de.yaxgl
         {
             eventHandlerManager.invokeHandlers(control, eventArgs);
         }
-        
-        public void show()
+
+        public void showInTaskbar(bool show)
         {
-            //Application.Run(((Form)this.control));            
-            ((Form)this.control).ShowDialog();
+            ((Form)this.control).ShowInTaskbar = show;
         }
 
-        public void hide() 
+        public void setBorderStyle(WindowStyle windowStyle)
         {
-            ((Form)this.control).Hide();
+            Form thisForm = (Form)this.control;
+            switch (windowStyle)
+            { 
+                case WindowStyle.Fixed:
+                    thisForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+                    break;
+                case WindowStyle.None:
+                    thisForm.FormBorderStyle = FormBorderStyle.None;
+                    break;
+                case WindowStyle.Sizeable:
+                    thisForm.FormBorderStyle = FormBorderStyle.Sizable;
+                    break;
+            }
+        
+        }
+        
+        public void minimizeable(bool minimize)
+        {
+            ((Form)this.control).MinimizeBox = minimize;
+        }
+
+        public void maximizeable(bool maximize)
+        {
+            ((Form)this.control).MaximizeBox = maximize;
+        }
+
+
+        public void setIcon(string icon)
+        {
+            ((Form)this.control).Icon = new System.Drawing.Icon(icon);
         }
 
         /*returns the container title**/
@@ -68,13 +106,22 @@ namespace de.yaxgl
             return this.control.Text;
         }
 
-
         /*sets the container title**/
         public void setTitle(string title)
         {
             this.control.Text = title;
         }
 
+        public void show()
+        {
+            //Application.Run(((Form)this.control));            
+            ((Form)this.control).ShowDialog();
+        }
+
+        public void hide()
+        {
+            ((Form)this.control).Hide();
+        }
     }
 
 } // END NAMESPACE

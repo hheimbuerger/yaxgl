@@ -18,8 +18,23 @@ namespace TestApplication
         public Start(string xmlFile)
         {
             winManager = new WindowManager();
-            winManager.createWindow(xmlFile, this).show();
-        }
+            
+            Window win=winManager.createWindow(xmlFile, this);
+            /* Wir brauchen glaub noch was das man sich von einer Component den owner holen kann
+             * und auch das man sich das Haupt window einer Component holen kann
+             * 
+             * mein vorschlag owner kommt nicht nur in Controll und Grou,GroupBox etc rein sondern gleich in component
+             * Window hat dann halt den owner=null. falls es das Hauptwindow ist.
+             * 
+             * */
+            Button but = new Button(win, "button2");
+            but.setLabel("erstellt in testappl");
+            but.setBounds(0, 120, 100, 20);
+            win.add(but);
+
+            win.show();
+
+         }
         
         public static void Main()
         {
@@ -31,6 +46,7 @@ namespace TestApplication
         public void clickButton1(Component sender,de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Label: " + ((de.yaxgl.Button)sender).getLabel() + "\n" + args.ToString());
+                  
         }
 
         //and you can use the attributes like this, this is given by the construktor of EventHandler

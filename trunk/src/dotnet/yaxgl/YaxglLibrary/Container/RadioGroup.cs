@@ -17,8 +17,7 @@ namespace de.yaxgl
             /*register events*/
 
             parseXML(rootElement);
-            /*init*/
-            initializeContainer();
+            
         }
 
         public override void initializeNativeControl(XmlElement xmlElement)
