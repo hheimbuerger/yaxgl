@@ -27,11 +27,8 @@ namespace de.yaxgl
                       Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
                       Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
 
-            if (xmlElement.Attributes["multiselect"].InnerText.Equals("true"))
-                setMultiselection(true);
-            else if (xmlElement.Attributes["multiselect"].InnerText.Equals("false"))
-                setMultiselection(false);
-
+            setMultiselection(Boolean.Parse(xmlElement.Attributes["multiselect"].InnerText));
+            
 
             foreach (XmlNode xmlNode in xmlElement.ChildNodes)
             {

@@ -24,12 +24,7 @@ namespace de.yaxgl
                       Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
                       Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
             setLabel(xmlElement.Attributes["label"].InnerText);
-            
-            if (xmlElement.Attributes["checked"].InnerText.Equals("true"))
-               setChecked(true);
-            else if (xmlElement.Attributes["checked"].InnerText.Equals("false"))
-               setChecked(false);
-            
+            setChecked(Boolean.Parse(xmlElement.Attributes["checked"].InnerText));
         }
 
         public void setChecked(bool checkedState)

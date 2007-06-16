@@ -23,7 +23,6 @@ namespace de.yaxgl
             
             //TODO:register GroupEvents
             
-            initializeContainer();
         }
 
         public override void initializeNativeControl(XmlElement xmlElement)

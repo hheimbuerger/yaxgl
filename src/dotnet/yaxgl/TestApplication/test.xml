@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <yaxgl:window xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				title="Controls Übersicht" xpos="600" ypos="600" height="400" width="600" id="window1"
-				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd">
+				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd"
+        title="Controls Übersicht" xpos="600" ypos="600" height="400" width="600" 
+        id="window1" icon="../../capy.ico" minimizeBox="true" maximizeBox="false" borderStyle="fixed">
   
   <yaxgl:imagebox id="imagebox1" xpos="350" ypos="230" width="200" height="130" source="../../Logo.png" alternativeText="Bild nicht vorhanden"/>
   <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="Groupbox">

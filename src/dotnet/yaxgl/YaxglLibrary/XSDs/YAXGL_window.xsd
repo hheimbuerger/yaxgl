@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/" targetNamespace="http://www.yaxgl.de/schema/yaxgl/1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xsd:include schemaLocation="YAXGL_container.xsd" />
+  <xsd:simpleType name="borderStyleType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="fixed" />
+      <xsd:enumeration value="sizeable" />
+      <xsd:enumeration value="none" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="WindowType">
     <xsd:annotation>
       <xsd:documentation>Represents a GUI window, consisting of controls and groups</xsd:documentation>
@@ -16,6 +23,8 @@
         <xsd:attribute name="icon" type="xsd:string" use="optional" />
         <xsd:attribute name="minimizeBox" type="xsd:boolean" use="optional" default="true" />
         <xsd:attribute name="showInTaskbar" type="xsd:boolean" use="optional" default="true" />
+        <xsd:attribute name="maximizeBox" type="xsd:boolean" default="true" use="optional" />
+        <xsd:attribute name="borderStyle" type="yaxgl:borderStyleType" default="sizeable" use="optional" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -51,16 +51,37 @@ namespace de.yaxgl
         public abstract void notifyEvent(Component control, EventArgs eventArgs);
         
 
-        /*iterates over all Containables and adds the specific base controlls to the specific container**/
-        protected void initializeContainer()
-        {
-            foreach (KeyValuePair<string,Containable> containable in components)
+        public void add(Containable containable)
+        { 
+            if(containable!=null)
             {
-                this.control.Controls.Add(((Component)containable.Value).getNativeComponent());
+                if (!this.components.ContainsKey(((Component)containable).getID()))
+                {
+                    /* add containable to dictionary components of the container*/
+                    this.components.Add(((Component)containable).getID(), containable);
+                    /* add native component to native container*/
+                    this.control.Controls.Add(((Component)containable).getNativeComponent());
+                }                
             }
         }
 
         
+        public void remove(Containable containable)
+        {
+            if (containable != null)
+            {
+                if (this.components.ContainsKey(((Component)containable).getID()))
+                {
+                    /*remove conatinable from dictionary container of our WidgetContainables*/
+                    this.components.Remove(((Component)containable).getID());
+                    /*remove native control from native caontainer*/
+                    this.control.Controls.Remove(((Component)containable).getNativeComponent());
+                }
+            }
+        }
+
+
+
         /* returns the de.yaxgl component by given string ID  
          **/
         public Component getComponentById(string ID)
@@ -154,10 +175,7 @@ namespace de.yaxgl
                 if (xmlNode.NodeType == XmlNodeType.Element)
                 {
                     xmlElement = (XmlElement)xmlNode;
-                    
-                    Containable newContainable = SimpleComponentFactory.createComponent(this, xmlElement);
-                    if(newContainable!=null)
-                        components.Add(((Component)newContainable).getID(),newContainable);
+                    add(SimpleComponentFactory.createComponent(this, xmlElement));
                 }
             }
         }
