@@ -17,6 +17,17 @@ namespace de.yaxgl
             this.control.LostFocus += new System.EventHandler(lostFocusEvent);
         }
 
+        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
+        {
+            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText), 
+                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
+            setLabel(xmlElement.Attributes["label"].InnerText);
+
+        }
+
+
         public void setChecked(bool checkedState)
         {
             

@@ -91,7 +91,7 @@ namespace de.yaxgl
             // Set the validation settings.
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
-            settings.XmlResolver = null; // new MyXmlResolver(null);
+            settings.XmlResolver = null; // new MyXmlResolver(null); was macht das ding
 
             // Add the schemas.
             string[] schemas = { "YAXGL_container.xsd", "YAXGL_window.xsd", "YAXGL_group.xsd" };
@@ -112,10 +112,7 @@ namespace de.yaxgl
 
 
             XmlDocument doc = new XmlDocument();
-            //try
-            //{
-                // Create the XmlReader object.
-                XmlReader reader = XmlReader.Create(xmlfile, settings);
+            XmlReader reader = XmlReader.Create(xmlfile, settings);
                 doc.Load(reader);
             //}
             //catch (XmlSchemaValidationException e)
@@ -138,15 +135,12 @@ namespace de.yaxgl
         protected void parseXML(XmlElement rootElement)
         {
             
-            /*set container options from cml atributes here*/
-            if (rootElement.Name.Equals("yaxgl:window"))
+            /*set container options from xml atributes here*/
+            if (rootElement.LocalName.Equals("window"))
             {
-                this.ID = rootElement.Attributes["id"].InnerText;
-                this.setBounds(Convert.ToInt32(rootElement.Attributes["xpos"].InnerText), Convert.ToInt32(rootElement.Attributes["ypos"].InnerText),
-                    Convert.ToInt32(rootElement.Attributes["width"].InnerText), Convert.ToInt32(rootElement.Attributes["height"].InnerText));
-                ((Window)this).setTitle(rootElement.Attributes["title"].InnerText);
+                this.initializeNativeControl(rootElement);
             }
-            else if (rootElement.Name.Equals("yaxgl:group"))
+            else if (rootElement.LocalName.Equals("group"))
             { 
                 Dimension dimension=new Dimension(Convert.ToInt32(rootElement.Attributes["width"].InnerText),
                     Convert.ToInt32(rootElement.Attributes["height"].InnerText));

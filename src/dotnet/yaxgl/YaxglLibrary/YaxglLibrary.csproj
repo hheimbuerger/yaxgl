@@ -41,6 +41,7 @@
     <Compile Include="Container\Container.cs" />
     <Compile Include="Container\Group.cs" />
     <Compile Include="Container\GroupBox.cs" />
+    <Compile Include="Container\RadioGroup.cs" />
     <Compile Include="Container\Window.cs" />
     <Compile Include="Container\WindowManager.cs" />
     <Compile Include="Controls\Button.cs" />
@@ -73,6 +74,14 @@
     <EmbeddedResource Include="XSDs\YAXGL_window.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="XSDs\YAXGL_container.xsx">
+      <DependentUpon>YAXGL_container.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\YAXGL_window.xsx">
+      <DependentUpon>YAXGL_window.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

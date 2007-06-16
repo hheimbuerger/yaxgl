@@ -15,6 +15,16 @@ namespace de.yaxgl
             this.control.Click += new System.EventHandler(clickEvent);
         }
 
+        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
+        {
+            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
+            setLabel(xmlElement.Attributes["label"].InnerText);
+        }
+
+
         public string getLabel()
         {
             return this.control.Text;
