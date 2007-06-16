@@ -28,6 +28,17 @@ namespace de.yaxgl
             initializeContainer();
         }
 
+        public override void initializeNativeControl(XmlElement xmlElement)
+        {
+            this.ID = xmlElement.Attributes["id"].InnerText;
+            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText), 
+                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText), 
+                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
+            setTitle(xmlElement.Attributes["title"].InnerText);
+  
+        }
+
 
         public void registerEventHandlers(Object eventReciever)
         {

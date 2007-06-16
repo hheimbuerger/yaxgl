@@ -26,6 +26,14 @@ namespace de.yaxgl
             initializeContainer();
         }
 
+        public override void initializeNativeControl(XmlElement xmlElement)
+        {
+            Position position = new Position(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+                                 Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText));
+            setPosition(position);
+
+        }
+
         public override void notifyEvent(Component control, EventArgs eventArgs)
         {
             owner.notifyEvent(control, eventArgs);    

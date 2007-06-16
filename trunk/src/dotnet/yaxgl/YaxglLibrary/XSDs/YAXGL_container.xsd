@@ -1,160 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
-		    targetNamespace="http://www.yaxgl.de/schema/yaxgl/1.0/"
-		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-		    elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xsd:attributeGroup name="IDGroup">
-		<xsd:attribute name="id" type="xsd:string" use="required"/>
-	</xsd:attributeGroup>
-	<!-- The base type for all controls - defining id, position and size. -->
-	<xsd:complexType name="ControlType" abstract="true">
-		<xsd:attributeGroup ref="yaxgl:IDGroup"/>
-		<xsd:attribute name="xpos" type="xsd:unsignedShort" use="required"/>
-		<xsd:attribute name="ypos" type="xsd:unsignedShort" use="required"/>
-		<xsd:attribute name="width" type="xsd:positiveInteger" use="required"/>
-		<xsd:attribute name="height" type="xsd:positiveInteger" use="required"/>
-	</xsd:complexType>
-	<!-- A button control, adds a label to the ControlType base. -->
-	<xsd:complexType name="ButtonType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="label" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A checkbox control, adds a label and an initial state to the ControlType base. -->
-	<xsd:complexType name="CheckboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="label" type="xsd:string" use="required"/>
-				<xsd:attribute name="checked" type="xsd:boolean" use="optional" default="false"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A label control, adds a label to the ControlType base. -->
-	<xsd:complexType name="LabelType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="label" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A radiogroup control, adds a label to the ControlType base. -->
-	<xsd:complexType name="RadiobuttonType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="label" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="RadiogroupType">
-		<xsd:sequence maxOccurs="unbounded">
-			<xsd:element name="radiobutton" type="yaxgl:RadiobuttonType" maxOccurs="unbounded"/>
-		</xsd:sequence>
-		<xsd:attribute name="id" type="xsd:string" use="required"/>
-		<xsd:attribute name="checked" type="xsd:string" use="optional" default=""/>
-	</xsd:complexType>
-	<!-- An editbox control, adds a text and a maximum length to the ControlType base. -->
-	<xsd:complexType name="EditboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="text" type="xsd:string" use="optional"/>
-				<xsd:attribute name="maxlength" type="xsd:positiveInteger" use="optional"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A textbox control, adds a text and a maximum length to the ControlType base. -->
-	<xsd:complexType name="TextboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="text" type="xsd:string" use="optional"/>
-				<xsd:attribute name="maxlength" type="xsd:positiveInteger" use="optional"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- An imagebox control, adds a source filename and an alternative text to the ControlType base. -->
-	<xsd:complexType name="ImageboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:attribute name="source" type="xsd:string" use="required"/>
-				<xsd:attribute name="alternativeText" type="xsd:string" use="optional"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A groupref control, adds a source XML filename to the ControlType base. -->
-	<xsd:complexType name="GrouprefType">
-        <xsd:attributeGroup ref="yaxgl:IDGroup"/>
-        <xsd:attribute name="xpos" type="xsd:unsignedShort" use="required"/>
-        <xsd:attribute name="ypos" type="xsd:unsignedShort" use="required"/>
-        <xsd:attribute name="source" type="xsd:string" use="required"/>
-	</xsd:complexType>
-	<!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
-	<xsd:complexType name="ComboboxItem">
-		<xsd:attribute name="label" type="xsd:string" use="required"/>
-	</xsd:complexType>
-	<xsd:complexType name="ComboboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:sequence maxOccurs="unbounded">
-					<xsd:element name="item" type="yaxgl:ComboboxItem" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="selected" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
-	<xsd:complexType name="ListboxItem">
-		<xsd:attribute name="label" type="xsd:string" use="required"/>
-		<xsd:attribute name="selected" type="xsd:boolean" use="optional"/>
-	</xsd:complexType>
-	<xsd:complexType name="ListboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-				<xsd:sequence maxOccurs="unbounded">
-					<xsd:element name="item" type="yaxgl:ListboxItem" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="multiselect" type="xsd:boolean" use="optional" default="false"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- A groupbox control, adds a title attribute and the ability to contain arbitrary controls. -->
-	<xsd:complexType name="GroupboxType">
-		<xsd:complexContent>
-			<xsd:extension base="yaxgl:ControlType">
-                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
-                    <xsd:element name="button" type="yaxgl:ButtonType" minOccurs="0"/>
-                    <xsd:element name="checkbox" type="yaxgl:CheckboxType" minOccurs="0"/>
-                    <xsd:element name="label" type="yaxgl:LabelType" minOccurs="0"/>
-                    <xsd:element name="radiogroup" type="yaxgl:RadiogroupType" minOccurs="0"/>
-                    <xsd:element name="editbox" type="yaxgl:EditboxType" minOccurs="0"/>
-                    <xsd:element name="textbox" type="yaxgl:TextboxType" minOccurs="0"/>
-                    <xsd:element name="imagebox" type="yaxgl:ImageboxType" minOccurs="0"/>
-                    <xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0"/>
-                    <xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0"/>
-                    <xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0"/>
-                    <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0"/>
-                </xsd:sequence>
-                <xsd:attribute name="title" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!-- the container -->
-	<xsd:complexType name="ContainerType" abstract="true">
-		<xsd:annotation>
-			<xsd:documentation>Represents a container of some sort, will be subclassed to 'window' and 'group'</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
-			<xsd:element name="button" type="yaxgl:ButtonType" minOccurs="0"/>
-			<xsd:element name="checkbox" type="yaxgl:CheckboxType" minOccurs="0"/>
-			<xsd:element name="label" type="yaxgl:LabelType" minOccurs="0"/>
-			<xsd:element name="radiogroup" type="yaxgl:RadiogroupType" minOccurs="0"/>
-			<xsd:element name="editbox" type="yaxgl:EditboxType" minOccurs="0"/>
-			<xsd:element name="textbox" type="yaxgl:TextboxType" minOccurs="0"/>
-			<xsd:element name="imagebox" type="yaxgl:ImageboxType" minOccurs="0"/>
-			<xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0"/>
-			<xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0"/>
-			<xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0"/>
-            <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0"/>
-		</xsd:sequence>
-	</xsd:complexType>
+<xsd:schema xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/" targetNamespace="http://www.yaxgl.de/schema/yaxgl/1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:attributeGroup name="IDGroup">
+    <xsd:attribute name="id" type="xsd:string" use="required" />
+  </xsd:attributeGroup>
+  <!-- The base type for all controls - defining id, position and size. -->
+  <xsd:complexType name="ControlType" abstract="true">
+    <xsd:attributeGroup ref="yaxgl:IDGroup" />
+    <xsd:attribute name="xpos" type="xsd:unsignedShort" use="required" />
+    <xsd:attribute name="ypos" type="xsd:unsignedShort" use="required" />
+    <xsd:attribute name="width" type="xsd:positiveInteger" use="required" />
+    <xsd:attribute name="height" type="xsd:positiveInteger" use="required" />
+  </xsd:complexType>
+  <!-- A button control, adds a label to the ControlType base. -->
+  <xsd:complexType name="ButtonType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="label" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A checkbox control, adds a label and an initial state to the ControlType base. -->
+  <xsd:complexType name="CheckboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="label" type="xsd:string" use="required" />
+        <xsd:attribute name="checked" type="xsd:boolean" use="optional" default="false" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A label control, adds a label to the ControlType base. -->
+  <xsd:complexType name="LabelType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="label" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A radiogroup control, adds a label to the ControlType base. -->
+  <xsd:complexType name="RadiobuttonType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="label" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RadiogroupType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:sequence maxOccurs="unbounded">
+          <xsd:element name="radiobutton" type="yaxgl:RadiobuttonType" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required" />
+        <xsd:attribute name="checked" type="xsd:string" use="optional" default="" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- An editbox control, adds a text and a maximum length to the ControlType base. -->
+  <xsd:complexType name="EditboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="text" type="xsd:string" use="optional" />
+        <xsd:attribute name="maxlength" type="xsd:positiveInteger" use="optional" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A textbox control, adds a text and a maximum length to the ControlType base. -->
+  <xsd:complexType name="TextboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="text" type="xsd:string" use="optional" />
+        <xsd:attribute name="maxlength" type="xsd:positiveInteger" use="optional" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- An imagebox control, adds a source filename and an alternative text to the ControlType base. -->
+  <xsd:complexType name="ImageboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:attribute name="source" type="xsd:string" use="required" />
+        <xsd:attribute name="alternativeText" type="xsd:string" use="optional" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A groupref control, adds a source XML filename to the ControlType base. -->
+  <xsd:complexType name="GrouprefType">
+    <xsd:attributeGroup ref="yaxgl:IDGroup" />
+    <xsd:attribute name="xpos" type="xsd:unsignedShort" use="required" />
+    <xsd:attribute name="ypos" type="xsd:unsignedShort" use="required" />
+    <xsd:attribute name="source" type="xsd:string" use="required" />
+  </xsd:complexType>
+  <!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
+  <xsd:complexType name="ComboboxItem">
+    <xsd:attribute name="label" type="xsd:string" use="required" />
+  </xsd:complexType>
+  <xsd:complexType name="ComboboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:sequence maxOccurs="unbounded">
+          <xsd:element name="item" type="yaxgl:ComboboxItem" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="selected" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A combobox control, adds a selected attribute and subitems to the ControlType base. -->
+  <xsd:complexType name="ListboxItem">
+    <xsd:attribute name="label" type="xsd:string" use="required" />
+    <xsd:attribute name="selected" type="xsd:boolean" use="optional" default="false" />
+  </xsd:complexType>
+  <xsd:complexType name="ListboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:sequence maxOccurs="unbounded">
+          <xsd:element name="item" type="yaxgl:ListboxItem" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="multiselect" type="xsd:boolean" use="optional" default="false" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- A groupbox control, adds a title attribute and the ability to contain arbitrary controls. -->
+  <xsd:complexType name="GroupboxType">
+    <xsd:complexContent>
+      <xsd:extension base="yaxgl:ControlType">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+          <xsd:element name="button" type="yaxgl:ButtonType" minOccurs="0" />
+          <xsd:element name="checkbox" type="yaxgl:CheckboxType" minOccurs="0" />
+          <xsd:element name="label" type="yaxgl:LabelType" minOccurs="0" />
+          <xsd:element name="radiogroup" type="yaxgl:RadiogroupType" minOccurs="0" />
+          <xsd:element name="editbox" type="yaxgl:EditboxType" minOccurs="0" />
+          <xsd:element name="textbox" type="yaxgl:TextboxType" minOccurs="0" />
+          <xsd:element name="imagebox" type="yaxgl:ImageboxType" minOccurs="0" />
+          <xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0" />
+          <xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0" />
+          <xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0" />
+          <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="title" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- the container -->
+  <xsd:complexType name="ContainerType" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Represents a container of some sort, will be subclassed to 'window' and 'group'</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="button" type="yaxgl:ButtonType" minOccurs="0" />
+      <xsd:element name="checkbox" type="yaxgl:CheckboxType" minOccurs="0" />
+      <xsd:element name="label" type="yaxgl:LabelType" minOccurs="0" />
+      <xsd:element name="radiogroup" type="yaxgl:RadiogroupType" minOccurs="0" />
+      <xsd:element name="editbox" type="yaxgl:EditboxType" minOccurs="0" />
+      <xsd:element name="textbox" type="yaxgl:TextboxType" minOccurs="0" />
+      <xsd:element name="imagebox" type="yaxgl:ImageboxType" minOccurs="0" />
+      <xsd:element name="groupref" type="yaxgl:GrouprefType" minOccurs="0" />
+      <xsd:element name="combobox" type="yaxgl:ComboboxType" minOccurs="0" />
+      <xsd:element name="listbox" type="yaxgl:ListboxType" minOccurs="0" />
+      <xsd:element name="groupbox" type="yaxgl:GroupboxType" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
 </xsd:schema>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace de.yaxgl
 {
@@ -14,6 +15,8 @@ namespace de.yaxgl
             return ID;
         }
 
+        public abstract void initializeNativeControl(XmlElement xmlElement);
+        
         public void setBounds(int xpos, int ypos, int width, int height)
         {
             this.control.SetBounds(xpos, ypos, width, height);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace de.yaxgl
 {
@@ -18,6 +19,34 @@ namespace de.yaxgl
             ((System.Windows.Forms.ListBox)this.control).SelectedIndexChanged += new System.EventHandler(selectionChangedEvent);
         
         }
+
+        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
+        {
+            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
+
+            if (xmlElement.Attributes["multiselect"].InnerText.Equals("true"))
+                setMultiselection(true);
+            else if (xmlElement.Attributes["multiselect"].InnerText.Equals("false"))
+                setMultiselection(false);
+
+
+            foreach (XmlNode xmlNode in xmlElement.ChildNodes)
+            {
+                if (xmlNode.NodeType == XmlNodeType.Element)
+                {
+                    XmlElement itemElement = (XmlElement)xmlNode;
+                    string item = itemElement.Attributes["label"].InnerText;
+                    addItem(item);
+                    if (itemElement.Attributes["selected"].InnerText.Equals("true"))
+                       select(item);
+                    
+                }
+            }
+        }
+
 
         public void setMultiselection(bool multiselect)
         {

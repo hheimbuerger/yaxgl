@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace de.yaxgl
 {
@@ -19,6 +20,28 @@ namespace de.yaxgl
             this.control.LostFocus += new System.EventHandler(lostFocusEvent);
             ((System.Windows.Forms.ComboBox)this.control).SelectionChangeCommitted += new System.EventHandler(selectionChangedEvent);
         }
+
+        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
+        {
+            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText), 
+                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
+                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
+
+            foreach (XmlNode xmlNode in xmlElement.ChildNodes)
+            {
+                if (xmlNode.NodeType == XmlNodeType.Element)
+                {
+                    XmlElement itemElement = (XmlElement)xmlNode;
+                    addItem(itemElement.Attributes["label"].InnerText);
+                }
+            }
+
+            if (xmlElement.HasAttribute("selected"))
+                select(xmlElement.Attributes["selected"].InnerText);
+           
+        }
+
 
         public void addItem(string item)
         {

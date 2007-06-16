@@ -6,8 +6,10 @@
   
   <yaxgl:imagebox id="imagebox1" xpos="350" ypos="230" width="200" height="130" source="../../Logo.png" alternativeText="Bild nicht vorhanden"/>
   <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="Groupbox">
-    <yaxgl:checkbox id="radio1" label="Radiobutton1" xpos="10" ypos="15" height="20" width="100" checked="true"/>
-    <yaxgl:checkbox id="radio2" label="Radiobutton2" xpos="10" ypos="35" height="20" width="100"/>
+    <yaxgl:radiogroup id="radiogroup1" xpos="10" ypos="15" width="120" height="60" checked="radio2">
+      <yaxgl:radiobutton id="radio1" label="Radiobutton1" xpos="0" ypos="0" height="20" width="100"/>
+      <yaxgl:radiobutton id="radio2" label="Radiobutton2" xpos="0" ypos="20" height="20" width="100"/>
+    </yaxgl:radiogroup>
   </yaxgl:groupbox>
 
   <yaxgl:listbox id="listbox1" multiselect="true" xpos="350" ypos="120" height="100" width="200">
@@ -19,8 +21,8 @@
   <yaxgl:label id="label1" xpos="10" ypos="10" height="20" width="100" label="Ich bin ein Label:"/>
   <yaxgl:button id="button1" label="Push me!" xpos="10" ypos="40" height="20" width="100"/>
   <yaxgl:editbox id="editbox1" text="Ersetz mich!" xpos="10" ypos="80" height="20" width="150" maxlength="20"/>
-  <yaxgl:checkbox id="checkbox1" xpos="200" ypos="10" height="20" width="100" label="Checkbox 1" checked="true"/>
-  <yaxgl:checkbox id="checkbox2" xpos="200" ypos="30" height="20" width="100" label="Checkbox 2" checked="false"/>
+  <yaxgl:checkbox id="checkbox1" xpos="200" ypos="10" height="20" width="100" label="Checkbox 1" />
+  <yaxgl:checkbox id="checkbox2" xpos="200" ypos="30" height="20" width="100" label="Checkbox 2" checked="true"/>
   <yaxgl:combobox id="combobox1" xpos="200" ypos="80" width="100" height="20" selected="Fleisch">
 		<yaxgl:item  label="Salat"/>
 		<yaxgl:item  label="Fleisch"/>
