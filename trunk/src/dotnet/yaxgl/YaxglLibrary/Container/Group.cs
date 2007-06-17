@@ -7,7 +7,6 @@ namespace de.yaxgl
     //TODO: we need an other name for group
     public class Group : Container,Containable
     {
-        private Container owner = null;
         
         public Group(string xmlfile,Container owner,string ID)
         {

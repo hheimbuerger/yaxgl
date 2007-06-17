@@ -7,8 +7,7 @@ namespace de.yaxgl
 {
     public class GroupBox : Container,Containable
     {
-        private Container owner = null;
-
+        
         public GroupBox(System.Xml.XmlElement rootElement, Container owner, string ID)
         {
             this.owner = owner;

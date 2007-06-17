@@ -60,6 +60,8 @@
     <Compile Include="EventDispatcher\EventHandlerMethod.cs" />
     <Compile Include="Helper\Dimension.cs" />
     <Compile Include="Helper\Location.cs" />
+    <Compile Include="Helper\LookAndFeel.cs" />
+    <Compile Include="Helper\NativeGuiFramework.cs" />
     <Compile Include="Helper\Position.cs" />
     <Compile Include="Helper\WindowStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

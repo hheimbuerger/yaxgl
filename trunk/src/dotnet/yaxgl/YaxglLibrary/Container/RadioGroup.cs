@@ -6,8 +6,7 @@ namespace de.yaxgl
 {
     public class RadioGroup : Container,Containable
     {
-        private Container owner = null;
-
+        
         public RadioGroup(XmlElement rootElement,Container owner, string ID) 
         {
             this.owner = owner;
