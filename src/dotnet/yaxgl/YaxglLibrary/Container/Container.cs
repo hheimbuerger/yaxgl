@@ -179,6 +179,8 @@ namespace de.yaxgl
                 }
             }
         }
-    }
-}
+
+
+  } //END_Container class
+} //END_NAMESPACE
 
