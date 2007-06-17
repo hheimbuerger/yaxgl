@@ -1,14 +1,9 @@
 /**
  * 
  */
-package de.yaxgl;
+package de.yaxgl.Container;
 
-import java.awt.Rectangle;
-
-/**
- * @author Cort
- *
- */
+@SuppressWarnings("serial")
 public class Window extends Container {
 	
 	public Window(String filename) {

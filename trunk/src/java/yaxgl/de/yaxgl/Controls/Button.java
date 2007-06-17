@@ -1,7 +1,9 @@
 /**
  * 
  */
-package de.yaxgl;
+package de.yaxgl.Controls;
+
+import de.yaxgl.Base.Control;
 
 /**
  * @author Cort

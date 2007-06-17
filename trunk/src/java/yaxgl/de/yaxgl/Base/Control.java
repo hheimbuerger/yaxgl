@@ -1,7 +1,8 @@
 /**
  * 
  */
-package de.yaxgl;
+package de.yaxgl.Base;
+
 
 /**
  * @author Cort
