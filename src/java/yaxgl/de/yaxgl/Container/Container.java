@@ -1,16 +1,13 @@
 /**
  * 
  */
-package de.yaxgl;
+package de.yaxgl.Container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import de.yaxgl.Base.*;
 
-/**
- * @author Cort
- *
- */
 public abstract class Container extends Component implements Serializable {
 	private List<Containable> controls = new ArrayList<Containable>();
 	
