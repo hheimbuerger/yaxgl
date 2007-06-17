@@ -6,11 +6,10 @@ Python Library:
 - ...
 
 XML Schema:
+- unique keys
 - ...
 
 Diverses:
-- XSD mit in DLL
-- defaults aus XSD?
 
 
 
