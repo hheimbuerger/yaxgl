@@ -8,48 +8,48 @@ namespace de.yaxgl
     public class SimpleComponentFactory
     {
 
-        class NoImplementationForXmlElementException : Exception 
+        class NoImplementationForXmlElementException : Exception
         {
             public NoImplementationForXmlElementException()
             {
-            
+
             }
             public NoImplementationForXmlElementException(string message)
                 : base(message)
             {
-            
+
             }
-            
+
             public NoImplementationForXmlElementException(string message, Exception inner)
-            : base(message, inner)
+                : base(message, inner)
             {
-            
+
             }
         }
 
-        public static Containable createComponent(Container owner,XmlElement xmlElement)
+        public static Containable createComponent(Container owner, XmlElement xmlElement)
         {
-            Containable component=null;
-            
+            Containable component = null;
+
             if (xmlElement.LocalName.Equals("button"))
             {
                 component = new Button(owner, xmlElement.Attributes["id"].InnerText);
-            }            
+            }
             else if (xmlElement.LocalName.Equals("label"))
             {
-                component = new Label(owner, xmlElement.Attributes["id"].InnerText);                
+                component = new Label(owner, xmlElement.Attributes["id"].InnerText);
             }
             else if (xmlElement.LocalName.Equals("editbox"))
             {
-                component = new EditBox(owner, xmlElement.Attributes["id"].InnerText);                
+                component = new EditBox(owner, xmlElement.Attributes["id"].InnerText);
             }
             else if (xmlElement.LocalName.Equals("textbox"))
             {
                 component = new TextBox(owner, xmlElement.Attributes["id"].InnerText);
-             }
+            }
             else if (xmlElement.LocalName.Equals("checkbox"))
             {
-                component = new CheckBox(owner, xmlElement.Attributes["id"].InnerText);                
+                component = new CheckBox(owner, xmlElement.Attributes["id"].InnerText);
             }
             else if (xmlElement.LocalName.Equals("imagebox"))
             {
@@ -57,11 +57,11 @@ namespace de.yaxgl
             }
             else if (xmlElement.LocalName.Equals("combobox"))
             {
-                component = new ComboBox(owner, xmlElement.Attributes["id"].InnerText);                
+                component = new ComboBox(owner, xmlElement.Attributes["id"].InnerText);
             }
             else if (xmlElement.LocalName.Equals("listbox"))
             {
-                component = new ListBox(owner, xmlElement.Attributes["id"].InnerText);                
+                component = new ListBox(owner, xmlElement.Attributes["id"].InnerText);
             }
             else if (xmlElement.LocalName.Equals("radiobutton"))
             {
@@ -77,16 +77,17 @@ namespace de.yaxgl
             }
             else if (xmlElement.LocalName.Equals("radiogroup"))
             {
-                component = new RadioGroup(xmlElement,owner, xmlElement.Attributes["id"].InnerText);
+                component = new RadioGroup(xmlElement, owner, xmlElement.Attributes["id"].InnerText);
             }
             else
             {
-                throw new NoImplementationForXmlElementException("Error on creating component: No implementation for "+xmlElement.LocalName+ " jet available in this library." );
+                throw new NoImplementationForXmlElementException("Error on creating component: No implementation for " + xmlElement.LocalName + " jet available in this library.");
             }
 
+            /*init the component with the in xml given attributes*/
             ((Component)component).initializeNativeControl(xmlElement);
             return component;
         }
-    
+
     }
 }
