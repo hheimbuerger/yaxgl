@@ -6,7 +6,7 @@ namespace de.yaxgl
 {
     public abstract class Control : Component,Containable
     {
-        protected Container owner = null;
+        
         
         
         public void clickEvent(object sender, System.EventArgs e)

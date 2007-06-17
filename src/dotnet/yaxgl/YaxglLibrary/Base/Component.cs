@@ -5,18 +5,47 @@ using System.Xml;
 
 namespace de.yaxgl
 {
+    /*Base class of all de.yaxgl Components*/
     public abstract class Component
     {
-        protected string ID;
+
+        protected string ID;        
+        protected Container owner = null;
         protected System.Windows.Forms.Control control = null;
+        
 
         public string getID()
         {
             return ID;
         }
 
+        /* must be im plemented by every component is called by the component factory*/
         public abstract void initializeNativeControl(XmlElement xmlElement);
+
         
+        /* returns the direct Container of a component*/
+        public Container getContainer()
+        {
+            return this.owner;
+        }
+
+        
+        /*returns the window of a component*/
+        public Window getParentWindow()
+        {
+            Window retval = null;
+            if ((this.owner.GetType() == typeof(Window)) || (this.owner==null))
+            {
+                retval = (Window)this.owner;
+            }
+            else
+            {
+                retval = this.owner.getParentWindow();
+            }
+            return retval;
+        }
+
+
         public void setBounds(int xpos, int ypos, int width, int height)
         {
             this.control.SetBounds(xpos, ypos, width, height);
@@ -45,12 +74,12 @@ namespace de.yaxgl
         }
        
 
-        /*returns the Specific Native Control of an de.yaxgl.Containable (Control and Group)
+        /*returns the Specific Native Control of an de.yaxgl.Component
          * */
         public System.Windows.Forms.Control getNativeComponent()
         {
             return this.control;
         }
-
+        
      }
 }

@@ -13,6 +13,8 @@ namespace de.yaxgl
         
         public Window(string xmlfile)
         {
+            /*on creation a Window has no owner*/
+            this.owner = null;
             /*eventHandlerManager must be instanciated here before parsing XML
              *because the Group container needs an reference of his instance also
              * */
@@ -22,6 +24,8 @@ namespace de.yaxgl
             XmlElement rootElement = validateXmlDocument(@"http://www.yaxgl.de/schema/yaxgl/1.0/", @"http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd", xmlfile);
             parseXML(rootElement);
 
+            //Form f = new Form();
+            
             /*register window events*/
             //form.Click+=new System.EventHandler(form_Click);
         }
@@ -52,7 +56,8 @@ namespace de.yaxgl
 
         public void registerEventHandlers(Object eventReciever)
         {
-            eventHandlerManager.registerEventHandlers(eventReciever);
+            if(eventReciever!=null)
+                eventHandlerManager.registerEventHandlers(eventReciever);
         }
         
         /* notifys the EventHandlerManager for invoke incomming event from specific component*/
@@ -115,13 +120,34 @@ namespace de.yaxgl
         public void show()
         {
             //Application.Run(((Form)this.control));            
-            ((Form)this.control).ShowDialog();
+            //((Form)this.control).Show();
+            this.control.Show();
         }
 
+        /*if parentWindow is null the parent of this window is automatically the window below*/
+        public void showDialog(Window parentWindow)
+        {
+            if (parentWindow != null)
+            {
+                this.owner = parentWindow;
+                ((Form)this.control).ShowDialog(parentWindow.control);
+            }
+            else
+                ((Form)this.control).ShowDialog();
+        }
+        
+        
         public void hide()
         {
             ((Form)this.control).Hide();
         }
+
+        public void close()
+        {
+            ((Form)this.control).Close(); 
+        }
+    
+    
     }
 
 } // END NAMESPACE
