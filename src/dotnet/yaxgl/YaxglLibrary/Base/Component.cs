@@ -76,7 +76,7 @@ namespace de.yaxgl
 
         /*returns the Specific Native Control of an de.yaxgl.Component
          * */
-        public System.Windows.Forms.Control getNativeComponent()
+        public Object getNativeComponent()
         {
             return this.control;
         }

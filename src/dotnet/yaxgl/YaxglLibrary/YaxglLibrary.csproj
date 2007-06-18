@@ -82,6 +82,9 @@
     <None Include="XSDs\YAXGL_container.xsx">
       <DependentUpon>YAXGL_container.xsd</DependentUpon>
     </None>
+    <None Include="XSDs\YAXGL_group.xsx">
+      <DependentUpon>YAXGL_group.xsd</DependentUpon>
+    </None>
     <None Include="XSDs\YAXGL_window.xsx">
       <DependentUpon>YAXGL_window.xsd</DependentUpon>
     </None>
