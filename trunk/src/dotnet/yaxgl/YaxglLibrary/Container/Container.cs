@@ -60,7 +60,7 @@ namespace de.yaxgl
                     /* add containable to dictionary components of the container*/
                     this.components.Add(((Component)containable).getID(), containable);
                     /* add native component to native container*/
-                    this.control.Controls.Add(((Component)containable).getNativeComponent());
+                    this.control.Controls.Add((System.Windows.Forms.Control)((Component)containable).getNativeComponent());
                 }                
             }
         }
@@ -75,7 +75,7 @@ namespace de.yaxgl
                     /*remove conatinable from dictionary container of our WidgetContainables*/
                     this.components.Remove(((Component)containable).getID());
                     /*remove native control from native caontainer*/
-                    this.control.Controls.Remove(((Component)containable).getNativeComponent());
+                    this.control.Controls.Remove((System.Windows.Forms.Control)((Component)containable).getNativeComponent());
                 }
             }
         }
