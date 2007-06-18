@@ -62,7 +62,6 @@
     <Compile Include="Helper\Location.cs" />
     <Compile Include="Helper\LookAndFeel.cs" />
     <Compile Include="Helper\NativeGuiFramework.cs" />
-    <Compile Include="Helper\Position.cs" />
     <Compile Include="Helper\WindowStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleComponentFactory.cs" />

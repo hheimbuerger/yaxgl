@@ -26,9 +26,9 @@ namespace de.yaxgl
 
         public override void initializeNativeControl(XmlElement xmlElement)
         {
-            Position position = new Position(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
+            Location location = new Location(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
                                  Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText));
-            setPosition(position);
+            setLocation(location);
 
         }
 

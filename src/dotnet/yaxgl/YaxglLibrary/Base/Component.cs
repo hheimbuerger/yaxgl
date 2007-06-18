@@ -62,15 +62,15 @@ namespace de.yaxgl
             this.control.Height = dimension.getHeight();
         }
 
-        public void setPosition(Position position)
+        public void setLocation(Location location)
         {
-            this.control.Location= new System.Drawing.Point(position.getX(),position.getY());
+            this.control.Location= new System.Drawing.Point(location.getX(),location.getY());
             
         }
 
-        public Position getPosition()
+        public Location getLocation()
         {
-            return new Position(this.control.Location.X, this.control.Location.Y); 
+            return new Location(this.control.Location.X, this.control.Location.Y); 
         }
        
 

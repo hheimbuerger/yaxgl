@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,37 +7,37 @@ namespace de.yaxgl
 {
     public class Location
     {
-        private int xpos;
-        private int ypos;
+        private int x;
+        private int y;
         
         public Location()
         {
-            xpos = 0;
-            ypos = 0;
+            x = 0;
+            y = 0;
         }
         
-        public Location(int xpos,int ypos)
+        public Location(int x,int y)
         {
-            this.xpos = xpos;
-            this.ypos = ypos;
+            this.x = x;
+            this.y = y;
         }
 
-        public int getXPos()
+        public int getX()
         {
-            return xpos; 
+            return x; 
         }
-        public void setXPos(int xpos)
+        public void setX(int x)
         {
-            this.xpos=xpos;
+            this.x=x;
         }
-        public int getYPos()
+        public int getY()
         {
-            return ypos;
+            return y;
         }
         
-        public void setYPos(int ypos)
+        public void setY(int y)
         {
-            this.ypos=ypos;
+            this.y=y;
         }
     }
 }
