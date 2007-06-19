@@ -5,4 +5,13 @@
         title="Controls Übersicht" xpos="600" ypos="600" height="400" width="600" 
         id="window1" icon="capy.ico" minimizeBox="true" maximizeBox="false" borderStyle="fixed">
 	<yaxgl:button id="button1" label="PUSH" xpos="10" ypos="10" width="100" height="20"/>
+	<yaxgl:label id="label1" label="Hallo" xpos="10" ypos="40" width="100" height="20"/>
+	<yaxgl:combobox height="20" xpos="10" width="100" selected="TV" ypos="70" id="combo1">
+		<yaxgl:item label="TV"/>
+		<yaxgl:item label="Radio"/>
+		<yaxgl:item label="Zeitung"/>
+	</yaxgl:combobox>
+	<yaxgl:checkbox id="checkbox1" xpos="200" ypos="30" width="100" height="20" label="dubble chees" checked="true"/>
+	<yaxgl:checkbox id="checkbox2" xpos="200" ypos="50" width="100" height="20" label="tonno"/>
+	<yaxgl:editbox id="edit1" xpos="200" ypos="80" width="120" height="20" text="cewl" maxlength="10" />
 </yaxgl:window>

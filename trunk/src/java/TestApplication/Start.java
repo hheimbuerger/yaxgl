@@ -1,5 +1,8 @@
 import de.yaxgl.Base.Component;
 import de.yaxgl.Container.*;
+import de.yaxgl.Controls.Button;
+import de.yaxgl.Controls.CheckBox;
+import de.yaxgl.Controls.ComboBox;
 import de.yaxgl.EventDispatcher.EventArgs;
 import de.yaxgl.EventDispatcher.Attribute.EventHandler;
 import de.yaxgl.EventDispatcher.Attribute.EventType;
@@ -23,14 +26,41 @@ public class Start {
 	
 	}
 	
-	@EventHandler(eventType=EventType.Click,eventID="button1",regexOn=false)
+	@EventHandler(eventType=EventType.Click,eventID="button1")
 	public void buttonClick(Component sender,EventArgs eventArgs)
 	{
-		System.out.println("Hallo");
-		
+		System.out.println("Button pushed");
+		CheckBox box=(CheckBox)sender.getParentWindow().getComponentById("checkbox2");
+		if(box.isChecked())
+			box.setChecked(false);
+		else
+			box.setChecked(true);
 	}
 	
+	@EventHandler(eventType=EventType.SelectionChanged,eventID="combo1")
+	public void comboSelectionChanged(Component sender,EventArgs eventArgs)
+	{
+		System.out.println(((ComboBox)sender).getSelectedItem());
+	}
 	
+	//@EventHandler(eventType=EventType.Click,eventID="checkbox1")
+	@EventHandler(eventType=EventType.Click,eventID="checkbox\\d",regexOn=true)
+	public void checkBox(Component sender,EventArgs eventArgs)
+	{
+		System.out.println(""+((CheckBox)sender).isChecked());
+	}
+	
+	@EventHandler(eventType=EventType.GotFocus,eventID="button1")
+	public void buttonGotFocus(Component sender,EventArgs eventArgs)
+	{
+		System.out.println(""+((Button)sender).getLabel()+ " got focus");
+	}
+	
+	@EventHandler(eventType=EventType.LostFocus,eventID="button1")
+	public void buttonLostFocus(Component sender,EventArgs eventArgs)
+	{
+		System.out.println(""+((Button)sender).getLabel()+ " lost focus");
+	}
 	
 	
 	public static void main(String[] args) {
