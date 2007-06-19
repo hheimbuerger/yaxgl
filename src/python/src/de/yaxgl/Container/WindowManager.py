@@ -40,10 +40,11 @@ class WindowManager:
         self.windows.append(window)
         return(window)
 
-    def run(self):
+    def run(self, window):
         #if(baseWindow == None):
         #    raise
         #Application.Run((Form)baseWindow.getNativeComponent());
+        window.show()
         self.app.MainLoop()
 
     def show(self, window):

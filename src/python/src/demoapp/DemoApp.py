@@ -13,10 +13,8 @@ class MyApp:
 
     def run(self):
         self.mainwin = self.wm.createWindow("test.xml", self)
-        #self.wm.add(self.mainwin)
-        self.mainwin.show()
-        self.wm.run()
-        
+        self.wm.run(self.mainwin)
+
     @EventHandler(EventType.Click, "button1")
     def handleButtonEvents(self, source, event):
         wx.MessageDialog(self.mainwin.getNativeComponent(), "hi!").ShowModal()        #, style=wx.MessageDialog.wxOK
