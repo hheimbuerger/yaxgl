@@ -15,6 +15,8 @@ namespace de.yaxgl
             this.eventID = eventID;
         }
 
+        /*
+         * 
         public static bool operator ==(EventArgs a, EventArgs b)
         {
              if (a.eventID.Equals(b.eventID) && a.eventType == b.eventType) return true;
@@ -26,7 +28,7 @@ namespace de.yaxgl
             if (!a.eventID.Equals(b.eventID) || a.eventType != b.eventType) return true;
             else return false;
         }
-        
+        */
         
         public string getID()
         {
@@ -38,6 +40,7 @@ namespace de.yaxgl
             return this.eventType;
         }
 
+       /*
         public override bool Equals(object obj)
         {
             if (this == (EventArgs)obj) return true;
@@ -48,7 +51,8 @@ namespace de.yaxgl
         {
             return base.GetHashCode();
         }
-        
+        */
+
         public override string ToString()
         {
             return base.ToString() + "(eventType=" + this.eventType + ",eventID="+this.eventID+")";
