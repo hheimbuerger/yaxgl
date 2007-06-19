@@ -49,8 +49,7 @@
       <xsd:extension base="yaxgl:ControlType">
         <xsd:sequence maxOccurs="unbounded">
           <xsd:element name="radiobutton" type="yaxgl:RadiobuttonType" maxOccurs="unbounded" />
-        </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:string" use="required" />
+        </xsd:sequence>
         <xsd:attribute name="checked" type="xsd:string" use="optional" default="" />
       </xsd:extension>
     </xsd:complexContent>

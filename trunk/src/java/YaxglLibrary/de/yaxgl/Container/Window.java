@@ -5,12 +5,12 @@ package de.yaxgl.Container;
 
 import java.io.*;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Element;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 
 import de.yaxgl.Base.*;
 import de.yaxgl.EventDispatcher.*;
@@ -20,39 +20,77 @@ import de.yaxgl.Helper.*;
 public class Window extends Container {
 	
 	private EventHandlerManager eventHandlerManager=null;
+	private Display d=null;
 	
 	public Window(String xmlfile)
 	{
-		 /*on creation a Window has no owner*/
-        this.owner = null;
-        /*eventHandlerManager must be instanciated here before parsing XML
-         *because the Group container needs an reference of his instance also
-         * */
+		/*on creation a Window has no owner*/
+		this.owner = null;
+		/*eventHandlerManager must be instanciated here before parsing XML
+        *because the Group container needs an reference of his instance also
+        * */
         this.eventHandlerManager = new EventHandlerManager();
-        this.control = new org.eclipse.swt.widgets.Shell();
-        
+           
         Element rootElement = validateXmlDocument(xmlfile);
         parseXML(rootElement);
-        
-        //Form f = new Form();
-        
         /*register window events*/
-        //form.Click+=new System.EventHandler(form_Click);
-	
-	
+        //form.Click+=new System.EventHandler(form_Click)
+        
 	}
-
-	@Override
-	public void notifyEvent(Component control, EventArgs eventArgs) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void registerEventHandlers(Object eventReciever)
+     {
+         if(eventReciever!=null)
+         {
+			try {
+				eventHandlerManager.registerEventHandlers(eventReciever);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+     }
+	 
+	 
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
-		// TODO Auto-generated method stub
+		int style=SWT.SHELL_TRIM;
+		this.ID = xmlElement.getAttribute("id");
+                
+        if(!Boolean.valueOf(xmlElement.getAttribute("minimizeBox")))
+        	style=style-SWT.MIN;
+        
+        if(!Boolean.valueOf(xmlElement.getAttribute("maximizeBox")))
+        	style=style-SWT.MAX;
+        
+         String borderStyle= xmlElement.getAttribute("borderStyle");
+
+        if (borderStyle == "fixed")
+            style=style-SWT.RESIZE;
+        else if (borderStyle == "none")
+            style=SWT.NONE;
+        
+        d=new Display();
+        this.control = new org.eclipse.swt.widgets.Shell(d,style);
+        
+        setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")), 
+        		Integer.valueOf(xmlElement.getAttribute("ypos")),
+        		Integer.valueOf(xmlElement.getAttribute("width")), 
+        		Integer.valueOf(xmlElement.getAttribute("height")));
+        
+        setTitle(xmlElement.getAttribute("title"));
+        setIcon(xmlElement.getAttribute("icon"));
+  
+	}
+	
+	
+	@Override
+	public void notifyEvent(Component control, EventArgs eventArgs) {
+
+		eventHandlerManager.invokeHandlers(control, eventArgs);
 		
 	}
+
+	
 	public void showInTaskbar(boolean show)
     {
         //((org.eclipse.swt.widgets.Shell)this.control).
@@ -61,7 +99,6 @@ public class Window extends Container {
     public void setBorderStyle(WindowStyle windowStyle)
     {
     	
-    	org.eclipse.swt.widgets.Shell thisShell=(org.eclipse.swt.widgets.Shell)this.control;
     	switch (windowStyle)
         { 
             case Fixed:
@@ -81,14 +118,13 @@ public class Window extends Container {
     public void minimizeable(boolean minimize)
     {
     	throw new NotImplementedException();
-    	//((Form)this.control).MinimizeBox = minimize;
+    	
     }
 
     public void maximizeable(boolean maximize)
     {
-    	//((org.eclipse.swt.widgets.Shell)this.control).setM
-    	// ((Form)this.control).MaximizeBox = maximize;
-    }
+    	throw new NotImplementedException();
+    	}
 
 
     public void setIcon(String icon)
@@ -118,7 +154,13 @@ public class Window extends Container {
 
     public void show()
     {
+    	
     	((org.eclipse.swt.widgets.Shell)this.control).open();
+    	 
+    	while (!((org.eclipse.swt.widgets.Shell)this.control).isDisposed ()) {
+ 			if (!d.readAndDispatch ()) d.sleep ();
+ 		}
+ 		d.dispose ();
     }
 
     /*if parentWindow is null the parent of this window is automatically the window below*/
@@ -127,12 +169,10 @@ public class Window extends Container {
         if (parentWindow != null)
         {
             this.owner = parentWindow;
-            //((Form)this.control).ShowDialog(parentWindow.control);
+            ((org.eclipse.swt.widgets.Shell)this.control).setParent((org.eclipse.swt.widgets.Composite)parentWindow.getNativeComponent());
         }
-        //else
-            //((Form)this.control).ShowDialog();
+        ((org.eclipse.swt.widgets.Shell)this.control).open();
     }
-    
     
     public void hide()
     {
