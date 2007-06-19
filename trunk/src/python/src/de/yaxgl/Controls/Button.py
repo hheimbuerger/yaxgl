@@ -9,16 +9,13 @@ class Button(Control):
         Control.__init__(self)
         self.owner = owner
         self.ID = ID
-        self.control = wx.Button(parent=owner.getNativeComponent())
-
-        self.control.Bind(wx.EVT_BUTTON, self.onButtonClick)
 
     def initializeNativeControl(self, xmlElement):
-        self.control.SetDimensions(int(xmlElement.getAttribute("xpos")),
-                                   int(xmlElement.getAttribute("ypos")),
-                                   int(xmlElement.getAttribute("width")),
-                                   int(xmlElement.getAttribute("height"))
-                                   )
+        self.control = wx.Button(parent=self.owner.panel,
+                                 pos=wx.Point(int(xmlElement.getAttribute("xpos")), int(xmlElement.getAttribute("ypos"))),
+                                 size=wx.Size(int(xmlElement.getAttribute("width")), int(xmlElement.getAttribute("height")))
+                                )
+        self.control.Bind(wx.EVT_BUTTON, self.onButtonClick)
         self.setLabel(xmlElement.getAttribute("label"))
     
     def getLabel(self):

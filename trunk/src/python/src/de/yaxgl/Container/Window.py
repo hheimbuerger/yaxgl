@@ -11,19 +11,46 @@ class Window(Container):
         Container.__init__(self)
         self.owner = None
         self.eventHandlerManager = EventHandlerManager()
-        self.control = wx.Frame(parent=None)
         
         dom = parse(xmlFile)
         self.parseXML(dom.documentElement)
 
     def initializeNativeControl(self, xmlElement):
         self.ID = xmlElement.getAttribute("id")
-        self.control.SetDimensions(int(xmlElement.getAttribute("xpos")),
-                                   int(xmlElement.getAttribute("ypos")),
-                                   int(xmlElement.getAttribute("width")),
-                                   int(xmlElement.getAttribute("height"))
-                                   )
+        windowStyle = wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN
+        if(xmlElement.getAttribute("maximizeBox") == "true"):
+            windowStyle |= wx.MAXIMIZE_BOX
+        if(xmlElement.getAttribute("minimizeBox") == "true"):
+            windowStyle |= wx.MINIMIZE_BOX
+        if(xmlElement.getAttribute("showInTaskbar") == "false"):
+            windowStyle |= wx.FRAME_NO_TASKBAR
+        if(xmlElement.getAttribute("borderStyle") == "fixed"):
+            pass
+        elif(xmlElement.getAttribute("borderStyle") == "none"):
+            raise NotYetImplementedException("borderStyle==none not implemented in Python/wxWidgets")
+        else:
+            windowStyle |= wx.RESIZE_BORDER
+        self.control = wx.Frame(parent=None,
+                                style=windowStyle,
+                                pos=wx.Point(int(xmlElement.getAttribute("xpos")), int(xmlElement.getAttribute("ypos"))),
+                                size=wx.Size(int(xmlElement.getAttribute("width")), int(xmlElement.getAttribute("height")))
+                                )
+        self.panel = wx.Panel(self.control)
+        #self.control.SetAutoLayout(False)
+        #self.control.SetSizer(None)
         self.control.SetLabel(xmlElement.getAttribute("title"))
+        if(xmlElement.hasAttribute("icon")):
+            wx.InitAllImageHandlers()
+            #image = wx.Image(xmlElement.getAttribute("icon"), wx.BITMAP_TYPE_ICO)
+            #image = image.ConvertToBitmap()
+            
+            #icon = wx.EmptyIcon()
+            #icon.CopyFromBitmap(image)
+            icon = wx.Icon(xmlElement.getAttribute("icon"), wx.BITMAP_TYPE_ICO)
+            
+            self.control.SetIcon(icon)
+        
+            
 #===============================================================================
 #        setIcon(xmlElement.Attributes["icon"].InnerText);
 #        minimizeable(Boolean.Parse(xmlElement.Attributes["minimizeBox"].InnerText));
@@ -56,7 +83,7 @@ class Window(Container):
 #        {
 #            Form thisForm = (Form)this.control;
 #            switch (windowStyle)
-#            { 
+#            {  
 #                case WindowStyle.Fixed:
 #                    thisForm.FormBorderStyle = FormBorderStyle.FixedSingle;
 #                    break;

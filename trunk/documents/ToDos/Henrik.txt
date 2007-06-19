@@ -2,6 +2,12 @@
 ===== To Do
 ==========================================================================================================
 
+Aktuell:
+- Praesentation ueberarbeiten
+- Python Library -- das wichtigste
+- Demoapps
+- Website-Update
+
 Python Library:
 - ...
 
@@ -10,6 +16,7 @@ XML Schema:
 - ...
 
 Diverses:
+- Tagline fuer Website
 
 
 
