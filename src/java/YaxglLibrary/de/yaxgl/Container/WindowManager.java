@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 import de.yaxgl.Helper.LookAndFeel;
 
@@ -17,36 +18,8 @@ public class WindowManager {
 	 List<Window> windows = null;
      private static WindowManager instance = null;
      private static boolean initialized = false;
-
+     private static Display display=null;
      
-     public class NotYetInitilaizedException extends Exception 
-     { 
-         public NotYetInitilaizedException()
-         {
-         
-         }
-         public NotYetInitilaizedException(String message)
-         {
-        	 super(message);
-         }
-     }
-     
-     public class NotSupportedException extends Exception
-     {
-    	 public NotSupportedException()
-    	 {
-    		 
-    		 
-    	 }
-    	 
-    	 public NotSupportedException(String message)
-    	 {
-    		 super(message);
-    		 
-    	 }
-    	 
-     }
-
      private WindowManager()
      {
              
@@ -54,30 +27,34 @@ public class WindowManager {
      }
 
 
-     public static void initialize(LookAndFeel lookAndFeel)
+     public static void initialize(LookAndFeel lookAndFeel) throws Exception
      {
          if (lookAndFeel != LookAndFeel.System)
-            // throw new NotSupportedException("Error: The LookAndFeel." + lookAndFeel.toString() + " style is not supported in C# .NET applications");
-         //TODO
+        	 //TODO
+        	 throw new Exception("The selected LookAndFeel is not supported.");
+        	 // throw new NotSupportedException("Error: The LookAndFeel." + lookAndFeel.toString() + " style is not supported in C# .NET applications");
+         
          initialized=true;
      }
      
      
-     public static WindowManager getInstance()
+     public static WindowManager getInstance() throws Exception
      {
          if (!initialized)
             //TODO //throw new NotYetInitilaizedException("Error: You have to initialize the WindowManager with a LookAndFeel before you can get an instance");
-
+        	 throw new Exception("The WindowManager must be initialized before you can have an instance.");
+         
          if (instance == null)
          {
-             instance = new WindowManager();
+             display=new Display();
+        	 instance = new WindowManager();
          }
          return instance;
      }
      
      public Window createWindow(String xmlfile,Object EventReciever)
      {
-         Window window = new Window(xmlfile);
+         Window window = new Window(display,xmlfile);
          window.registerEventHandlers(EventReciever);
          windows.add(window);
          return window;
@@ -89,14 +66,17 @@ public class WindowManager {
       * */
      public void run(Window baseWindow)
      {
-         //if (baseWindow == null)
-             //TODOthrow new NullReferenceException("Error: cannot run application");
-    	// Display d=new Display();
-    	 
-    	 
-    	
-     
-     
+    	 Shell shell=null;
+    	 if (baseWindow != null)
+    	 {
+    		 shell=(org.eclipse.swt.widgets.Shell)baseWindow.getNativeComponent();
+    		 baseWindow.show();
+    	 }
+            
+    	 while (!shell.isDisposed ()) {
+  			if (!display.readAndDispatch ()) display.sleep ();
+  		}
+  		display.dispose ();
      }
      
      public void show(Window window)
@@ -117,29 +97,28 @@ public class WindowManager {
              window.hide();
      }
 
-     /*
+     
      public void close(Window window)
      {
          if (window != null)
          {
-             if(windows.Contains(window))
+             if(windows.contains(window))
              {
-                 windows.Remove(window);
+                 windows.remove(window);
              }
              window.close();
          }
      }
 
-     public IList<Window> getWindowsByID(string ID)
+     public List<Window> getWindowsByID(String ID)
      {
-         IList<Window> matchingWindows = new List<Window>();
-         foreach (Window window in windows)
+         List<Window> matchingWindows = new ArrayList<Window>();
+         for(Window window : windows)
          {
-             if (window.getID().Equals(ID))
-                 matchingWindows.Add(window);
-         
+             if (window.getID().equals(ID))
+                 matchingWindows.add(window);
          }
          return matchingWindows;
      }
-*/
+
 }

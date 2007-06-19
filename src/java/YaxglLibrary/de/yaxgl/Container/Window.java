@@ -20,10 +20,11 @@ import de.yaxgl.Helper.*;
 public class Window extends Container {
 	
 	private EventHandlerManager eventHandlerManager=null;
-	private Display d=null;
+	private Display display=null;
 	
-	public Window(String xmlfile)
+	public Window(Display display,String xmlfile)
 	{
+		this.display=display;
 		/*on creation a Window has no owner*/
 		this.owner = null;
 		/*eventHandlerManager must be instanciated here before parsing XML
@@ -64,13 +65,12 @@ public class Window extends Container {
         
          String borderStyle= xmlElement.getAttribute("borderStyle");
 
-        if (borderStyle == "fixed")
+        if (borderStyle.equals("fixed"))
             style=style-SWT.RESIZE;
-        else if (borderStyle == "none")
+        else if (borderStyle.equals("none"))
             style=SWT.NONE;
         
-        d=new Display();
-        this.control = new org.eclipse.swt.widgets.Shell(d,style);
+        this.control = new org.eclipse.swt.widgets.Shell(display,style);
         
         setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")), 
         		Integer.valueOf(xmlElement.getAttribute("ypos")),
@@ -153,14 +153,8 @@ public class Window extends Container {
     }
 
     public void show()
-    {
-    	
+    { 	
     	((org.eclipse.swt.widgets.Shell)this.control).open();
-    	 
-    	while (!((org.eclipse.swt.widgets.Shell)this.control).isDisposed ()) {
- 			if (!d.readAndDispatch ()) d.sleep ();
- 		}
- 		d.dispose ();
     }
 
     /*if parentWindow is null the parent of this window is automatically the window below*/

@@ -16,13 +16,15 @@ public class Button extends Control {
 	{
 		this.ID=ID;
 		this.owner=owner;
-		/*thats stress*/
-		this.control=new org.eclipse.swt.widgets.Button((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),SWT.PUSH);
-		((org.eclipse.swt.widgets.Button)this.control).addSelectionListener(clickEvent(this));
+		
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
+		
+		this.control=new org.eclipse.swt.widgets.Button((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),SWT.PUSH);
+		((org.eclipse.swt.widgets.Button)this.control).addSelectionListener(clickEvent(this));
+		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),
 				Integer.valueOf(xmlElement.getAttribute("width")),
