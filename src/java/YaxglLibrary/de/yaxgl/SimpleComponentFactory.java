@@ -10,7 +10,6 @@ import de.yaxgl.Controls.*;
 
 public class SimpleComponentFactory {
 	  
-	
 	@SuppressWarnings("serial")
 	public class NoImplementationForXmlElementException extends Exception
       {
@@ -33,7 +32,7 @@ public class SimpleComponentFactory {
       {
           Containable component = null;
 
-          if (xmlElement.getLocalName().equals("button"))
+          if (xmlElement.getNodeName().equals("yaxgl:button"))
           {
               component = new Button(owner, xmlElement.getAttribute("id"));
           }

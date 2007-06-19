@@ -3,6 +3,8 @@
  */
 package de.yaxgl.Container;
 
+
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -13,12 +15,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-import org.w3c.dom.*;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import de.yaxgl.*;
@@ -79,46 +83,57 @@ public abstract class Container extends Component {
 	 * validates the xmlFile against the schemaFile and returns the root element
 	 * on success
 	 */
-	protected Element validateXmlDocument(String xmlfile) {
-		Document xmlDocument = null;
-		try {
-			// parse an XML document into a DOM tree
-
-			DocumentBuilder parser = DocumentBuilderFactory.newInstance()
-					.newDocumentBuilder();
-			xmlDocument = parser.parse(new File(xmlfile));
-
-			// create a SchemaFactory capable of understanding WXS schemas
-			SchemaFactory factory = SchemaFactory
-					.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-
-			//TODO: pack schemas into jar, and get them back from there
+	//TODO: validierung
+	protected Element validateXmlDocument(String xmlfile){
+			Document xmlDocument = null;
+			DocumentBuilder builder=null;
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 			
-			// load a WXS schema, represented by a Schema instance
-			Source[] schemaSources = {
-					new StreamSource(new File("YAXGL_container.xsd")),
-					new StreamSource(new File("YAXGL_window.xsd")),
-					new StreamSource(new File("YAXGL_group.xsd")) };
-
-			Schema schema = factory.newSchema(schemaSources);
-
-			// create a Validator instance, which can be used to validate an
-			// instance document
-			Validator validator = schema.newValidator();
-
-			// validate the DOM tree
-			validator.validate(new DOMSource(xmlDocument));
+			try {
+				builder = factory.newDocumentBuilder();
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				xmlDocument=builder.parse(new File(xmlfile));
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			/*
+			try{
+			
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			
+			// create a SchemaFactory capable of understanding WXS schemas
+			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			
+			Source[] schemaSources ={
+					new StreamSource(getClass().getResourceAsStream("..\\XSDs\\YAXGL_window.xsd")),
+					new StreamSource(getClass().getResourceAsStream("..\\XSDs\\YAXGL_container.xsd")),
+					new StreamSource(getClass().getResourceAsStream("..\\XSDs\\YAXGL_group.xsd")) 
+					};
+			
+			Schema schema = schemaFactory.newSchema(schemaSources);
+			factory.setSchema(schema);
+			
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			xmlDocument=builder.parse(new File(xmlfile));
 
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (ParserConfigurationException e1) {
-			
 			e1.printStackTrace();
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
-
-		return xmlDocument.getDocumentElement();
+			 */
+			return xmlDocument.getDocumentElement();
 	}
 
 	/*
@@ -127,10 +142,11 @@ public abstract class Container extends Component {
 	 */
 	protected void parseXML(Element rootElement) {
 
+		//TODO: get the LocalName and check if its equals the element and check for the uri
 		/* set container options from xml atributes here */
-		if (rootElement.getLocalName().equals("window")) {
+		if (rootElement.getNodeName().equals("yaxgl:window")) {
 			initializeNativeControl(rootElement);
-		} else if (rootElement.getLocalName().equals("group")) {
+		} else if (rootElement.getNodeName().equals("yaxgl:group")) {
 			Dimension dimension = new Dimension(Integer.valueOf(rootElement
 					.getAttribute("width")), Integer.valueOf(rootElement
 					.getAttribute("height")));

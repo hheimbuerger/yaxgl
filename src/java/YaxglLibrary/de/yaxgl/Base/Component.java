@@ -14,7 +14,6 @@ public abstract class Component {
 	protected org.eclipse.swt.widgets.Control control=null;
 	protected Container owner=null;
 	
-	
 
     public String getID()
     {
@@ -23,7 +22,6 @@ public abstract class Component {
 
     /* must be im plemented by every component is called by the component factory*/
     public abstract void initializeNativeControl(Element xmlElement);
-
     
     /* returns the direct Container of a component*/
     public Container getContainer()
