@@ -32,51 +32,52 @@ public class SimpleComponentFactory {
       {
           Containable component = null;
 
+          //TODO: the thing with the namespce uri and the localElementName
           if (xmlElement.getNodeName().equals("yaxgl:button"))
           {
               component = new Button(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("label"))
+          else if (xmlElement.getNodeName().equals("yaxgl:label"))
           {
-              //component = new Label(owner, xmlElement.getAttribute("id"));
+              component = new Label(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("editbox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:editbox"))
           {
-              //component = new EditBox(owner, xmlElement.getAttribute("id"));
+              component = new EditBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("textbox"))
+          else if (xmlElement.getNodeName().equals("textbox"))
           {
               //component = new TextBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("checkbox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:checkbox"))
           {
-             // component = new CheckBox(owner, xmlElement.getAttribute("id"));
+              component = new CheckBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("imagebox"))
+          else if (xmlElement.getNodeName().equals("imagebox"))
           {
              // component = new ImageBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("combobox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:combobox"))
           {
-             // component = new ComboBox(owner, xmlElement.getAttribute("id"));
+              component = new ComboBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("listbox"))
+          else if (xmlElement.getNodeName().equals("listbox"))
           {
              // component = new ListBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("radiobutton"))
+          else if (xmlElement.getNodeName().equals("radiobutton"))
           {
              // component = new RadioButton(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("groupref"))
+          else if (xmlElement.getNodeName().equals("groupref"))
           {
              // component = new Group(xmlElement.getAttribute("source"), owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("groupbox"))
+          else if (xmlElement.getNodeName().equals("groupbox"))
           {
             //  component = new GroupBox(xmlElement, owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getLocalName().equals("radiogroup"))
+          else if (xmlElement.getNodeName().equals("radiogroup"))
           {
              // component = new RadioGroup(xmlElement, owner, xmlElement.getAttribute("id"));
           }

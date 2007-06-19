@@ -16,14 +16,16 @@ public class Button extends Control {
 	{
 		this.ID=ID;
 		this.owner=owner;
-		
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
 		
 		this.control=new org.eclipse.swt.widgets.Button((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),SWT.PUSH);
+		
+		/*register Events*/
 		((org.eclipse.swt.widgets.Button)this.control).addSelectionListener(clickEvent(this));
+		this.control.addFocusListener(focusEvent(this));
 		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),

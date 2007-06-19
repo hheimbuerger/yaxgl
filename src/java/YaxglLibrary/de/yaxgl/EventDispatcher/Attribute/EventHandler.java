@@ -11,8 +11,6 @@ public @interface EventHandler {
 	
 	public EventType eventType();
 	public String eventID();
-	public boolean regexOn();
-	
-	//todo: wie ehier schon regexOn=false setzten standart
-	//und gehen auch so konstruktoren wi in c#
+	public boolean regexOn()default false;
+
 }
