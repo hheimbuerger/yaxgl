@@ -21,7 +21,7 @@ namespace de.yaxgl
             this.eventHandlerManager = new EventHandlerManager();
             this.control = new System.Windows.Forms.Form();
 
-            XmlElement rootElement = validateXmlDocument(@"http://www.yaxgl.de/schema/yaxgl/1.0/", @"http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd", xmlfile);
+            XmlElement rootElement = validateXmlDocument(xmlfile);
             parseXML(rootElement);
 
             //Form f = new Form();

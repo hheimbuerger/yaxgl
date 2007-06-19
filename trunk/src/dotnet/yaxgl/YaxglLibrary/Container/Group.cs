@@ -16,7 +16,7 @@ namespace de.yaxgl
 
             XmlElement rootElement = null;
 
-            rootElement = validateXmlDocument(@"http://www.yaxgl.de/schema/yaxgl/1.0/", @"http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_group.xsd", xmlfile);
+            rootElement = validateXmlDocument(xmlfile);
 
             parseXML(rootElement);
             

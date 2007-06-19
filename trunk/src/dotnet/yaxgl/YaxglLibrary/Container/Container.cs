@@ -42,7 +42,6 @@ namespace de.yaxgl
     //TODO: welche events sollen die container unterstützen?
     public abstract class Container : Component
     {
-        
         /*holder for Containable components*/
         protected IDictionary<string,Containable> components=new Dictionary<string,Containable>();
 
@@ -101,7 +100,7 @@ namespace de.yaxgl
 
         /* validates the xmlFile against the schemaFile and returns the root element on success
          **/
-        protected XmlElement validateXmlDocument(string urn, string schemafile,string xmlfile)
+        protected XmlElement validateXmlDocument(string xmlfile)
         {
             // Create the XmlSchemaSet class.
 //            XmlSchemaSet xmlSchemaSet = new XmlSchemaSet();
@@ -134,7 +133,7 @@ namespace de.yaxgl
 
             XmlDocument doc = new XmlDocument();
             XmlReader reader = XmlReader.Create(xmlfile, settings);
-                doc.Load(reader);
+            doc.Load(reader);
             //}
             //catch (XmlSchemaValidationException e)
             //{

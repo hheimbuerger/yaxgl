@@ -10,6 +10,6 @@ namespace de.yaxgl
         Click,
         GotFocus,
         LostFocus,
-        SelectionChanged,
+        SelectionChanged
     }
 }
