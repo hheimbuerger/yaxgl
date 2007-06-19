@@ -24,7 +24,7 @@ public class EventHandlerManager {
             {
                 for(Annotation annotation : annotations)
                 {
-                    if(annotation.getClass()==EventHandler.class)
+                    if(annotation.annotationType().equals(EventHandler.class))
                     {
                     	EventType eventType = ((EventHandler)annotation).eventType();
                     	String eventID = ((EventHandler)annotation).eventID();
@@ -41,7 +41,7 @@ public class EventHandlerManager {
                     // we also need to check whether the signature of the annotated method is what we expect it to be
                     Class componentParameter = method.getParameterTypes()[0];
                     Class argParameter = method.getParameterTypes()[1];
-                    if (componentParameter != Component.class || argParameter != EventArgs.class)
+                    if ((!componentParameter.equals(Component.class)) || (!argParameter.equals(EventArgs.class)))
                     {
                         throw new Exception("Event Handler must have 2 Arguments with Type " + EventType.class.toString() + " and " + String.class.toString() + ".");
                     }
