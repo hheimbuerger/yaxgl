@@ -4,7 +4,6 @@
 
 Aktuell:
 - Praesentation: Design-Kriterien
-- Website-Update
 
 Python Library:
 - ...
