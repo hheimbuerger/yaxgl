@@ -1,39 +1,24 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+import wx
+from de.yaxgl.Base.Control import Control
 
-namespace de.yaxgl
-{
-    public class Label : Control
-    {
+
+
+class Label(Control):
+    
+    def __init__(self, owner, ID):
+        Control.__init__(self)
+        self.owner = owner
+        self.ID = ID
         
-        public Label(Container owner, string ID)
-        {
-            this.owner = owner;
-            this.ID = ID;
-            this.control = new System.Windows.Forms.Label();
-            this.control.Click += new System.EventHandler(clickEvent);
-        }
-
-        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
-        {
-            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
-            setLabel(xmlElement.Attributes["label"].InnerText);
-        }
-
-
-        public string getLabel()
-        {
-            return this.control.Text;
-        }
-
-        public void setLabel(string label)
-        {
-            this.control.Text = label;
-        }
-
-    }
-}
+    def initializeNativeControl(self, xmlElement):
+        self.control = wx.StaticText(parent=self.owner.panel,
+                                 pos=wx.Point(int(xmlElement.getAttribute("xpos")), int(xmlElement.getAttribute("ypos"))),
+                                 size=wx.Size(int(xmlElement.getAttribute("width")), int(xmlElement.getAttribute("height")))
+                                )
+        self.setLabel(xmlElement.getAttribute("label"))
+    
+    def getLabel(self):
+        return(self.control.GetLabelText())
+    
+    def setLabel(self, label):
+        self.control.SetLabel(label)

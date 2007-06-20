@@ -14,10 +14,17 @@ class MyApp:
     def run(self):
         self.mainwin = self.wm.createWindow("test.xml", self)
         self.wm.run(self.mainwin)
+        
+    @EventHandler(EventType.Click, "absenden")
+    def onSubmit(self, source, event):
+        pizzaauswahl = self.mainwin.getComponentById("pizzaauswahl")
+        ergebnis = self.mainwin.getComponentById("bestellergebnis")
+        ergebnis.setLabel("Ihre Bestellung einer Pizza " + pizzaauswahl.getSelectedItem() + " wurde versendet!")
 
-    @EventHandler(EventType.Click, "button1")
-    def handleButtonEvents(self, source, event):
-        wx.MessageDialog(self.mainwin.getNativeComponent(), "hi!").ShowModal()        #, style=wx.MessageDialog.wxOK
+#    @EventHandler(EventType.Any, ".*", True)
+#    def handleButtonEvents(self, source, event):
+#        text = "Event: source=%s, event=%s" % (str(source), str(event))
+#        wx.MessageDialog(self.mainwin.getNativeComponent(), text).ShowModal()        #, style=wx.MessageDialog.wxOK
 
 
 

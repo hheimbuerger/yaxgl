@@ -1,52 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+import wx
+from de.yaxgl.Base.Control import Control
 
-namespace de.yaxgl
-{
-    public class CheckBox : Control
-    {
-        public CheckBox(Container owner,string ID)
-        {
-            this.owner = owner;
-            this.ID = ID;
-            this.control = new System.Windows.Forms.CheckBox();
-            //register events
-            this.control.Click += new System.EventHandler(clickEvent);
-            this.control.GotFocus += new System.EventHandler(gotFocusEvent);
-            this.control.LostFocus += new System.EventHandler(lostFocusEvent);
-        }
 
-        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
-        {
-            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
-            setLabel(xmlElement.Attributes["label"].InnerText);
-            setChecked(Boolean.Parse(xmlElement.Attributes["checked"].InnerText));
-        }
 
-        public void setChecked(bool checkedState)
-        {
-            ((System.Windows.Forms.CheckBox)this.control).Checked=checkedState;
-        }
-
-        public bool isChecked()
-        {
-            return ((System.Windows.Forms.CheckBox)this.control).Checked;
-        }
-
-        public string getLabel()
-        {
-            return this.control.Text;
-        }
-
-        public void setLabel(string label)
-        {
-            this.control.Text = label;
-        }
-
+class CheckBox(Control):
+    
+    def __init__(self, owner, ID):
+        Control.__init__(self)
+        self.owner = owner
+        self.ID = ID
         
-    }
-}
+    def initializeNativeControl(self, xmlElement):
+        self.control = wx.CheckBox(parent=self.owner.panel,
+                                 pos=wx.Point(int(xmlElement.getAttribute("xpos")), int(xmlElement.getAttribute("ypos"))),
+                                 size=wx.Size(int(xmlElement.getAttribute("width")), int(xmlElement.getAttribute("height")))
+                                )
+        self.control.Bind(wx.EVT_CHECKBOX, self.onClickEvent)
+        self.setLabel(xmlElement.getAttribute("label"))
+        self.setChecked(xmlElement.getAttribute("checked") == "true")
+    
+    def setChecked(self, checkedState):
+        self.control.SetValue(checkedState);
+
+    def isChecked(self):
+        return(self.control.GetValue());
+
+    def getLabel(self):
+        return(self.control.GetLabelText())
+    
+    def setLabel(self, label):
+        self.control.SetLabel(label)
+
+    def onClickEvent(self, event):
+        self.clickEvent(self, event)
