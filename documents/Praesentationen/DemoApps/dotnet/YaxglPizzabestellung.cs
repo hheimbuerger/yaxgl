@@ -23,7 +23,8 @@ public class YaxglPizzabestellung {
     
     
     
-    [EventHandler(eventType=EventType.Click, eventID="absenden")]
+    [EventHandler(eventType=EventType.Click,
+                  eventID="absenden")]
     public void onSubmit(Component sender, EventArgs args) {
         ComboBox pizzaauswahl = (ComboBox)mainwin.getComponentById("pizzaauswahl");
         Label ergebnis = (Label)mainwin.getComponentById("bestellergebnis");
@@ -32,7 +33,6 @@ public class YaxglPizzabestellung {
     
     
     
-    [STAThread]
     public static void Main() {
         new YaxglPizzabestellung().run();
     }
