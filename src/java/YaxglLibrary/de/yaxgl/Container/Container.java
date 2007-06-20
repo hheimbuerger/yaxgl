@@ -10,14 +10,9 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -25,10 +20,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import de.yaxgl.*;
-import de.yaxgl.Base.*;
-import de.yaxgl.EventDispatcher.*;
-import de.yaxgl.Helper.*;
+import de.yaxgl.SimpleComponentFactory;
+import de.yaxgl.Base.Component;
+import de.yaxgl.Base.Containable;
+import de.yaxgl.EventDispatcher.EventArgs;
+import de.yaxgl.Helper.Dimension;
 
 public abstract class Container extends Component {
 	/* holder for Containable components */
