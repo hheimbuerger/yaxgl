@@ -3,9 +3,7 @@
 ==========================================================================================================
 
 Aktuell:
-- Praesentation ueberarbeiten
-- Python Library -- das wichtigste
-- Demoapps
+- Praesentation: Design-Kriterien
 - Website-Update
 
 Python Library:
@@ -17,6 +15,8 @@ XML Schema:
 
 Diverses:
 - Tagline fuer Website
+- Fehlerbehandlung
+- EventType.Any missing in .NET and Java
 
 
 

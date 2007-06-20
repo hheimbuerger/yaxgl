@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Das anzuzeigende Fenster -->
+<yaxgl:window xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd"
+        id="mainwindow" 
+        title="YAXGL Pizzabestellung"
+        xpos="100" ypos="100" width="300" height="220" 
+        icon="../yaxgl.ico"
+        minimizeBox="false" maximizeBox="false" showInTaskbar="true" borderStyle="fixed">
+
+    <!-- Eine Combobox zur Pizzaauswahl mit beschreibendem Label -->
+	<yaxgl:label id="label1" xpos="10" ypos="13" width="100" height="20" label="Pizza"/>
+	<yaxgl:combobox id="pizzaauswahl" xpos="110" ypos="10" width="100" height="20" selected="Margherita">
+		<yaxgl:item  label="Margherita"/>
+		<yaxgl:item  label="Hawaii"/>
+		<yaxgl:item  label="Calzone"/>
+    </yaxgl:combobox>
+
+    <!-- Diverse Checkboxen zur Auswahl von Sonderbelegungen mit beschreibendem Label -->
+	<yaxgl:label id="label2" xpos="10" ypos="43" height="20" width="100" label="Sonderbelegungen"/>
+    <yaxgl:checkbox id="belag1" xpos="110" ypos="40" width="100" height="20" label="Extra Käse" />
+    <yaxgl:checkbox id="belag2" xpos="110" ypos="60" width="100" height="20" label="Peperoni" checked="true"/>
+    <yaxgl:checkbox id="belag3" xpos="110" ypos="80" width="100" height="20" label="Oliven" checked="true"/>
+  
+    <!-- Der Button zum Versenden der Bestellung -->
+	<yaxgl:button id="absenden" label="Absenden" xpos="10" ypos="110" width="100" height="23"/>
+
+    <!-- Die Labels zur Anzeige des Bestellergebnisses -->
+    <yaxgl:label id="label3" xpos="10" ypos="155" width="300" height="15" label="Stand der Bestellung:"/>
+    <yaxgl:label id="bestellergebnis" xpos="20" ypos="170" width="300" height="20" label="[noch keine Bestellung versandt]"/>
+
+</yaxgl:window>
