@@ -29,12 +29,14 @@ public class Start {
 	@EventHandler(eventType=EventType.Click,eventID="button1")
 	public void buttonClick(Component sender,EventArgs eventArgs)
 	{
+		
 		System.out.println("Button pushed");
 		CheckBox box=(CheckBox)sender.getParentWindow().getComponentById("checkbox2");
 		if(box.isChecked())
 			box.setChecked(false);
 		else
 			box.setChecked(true);
+	
 	}
 	
 	@EventHandler(eventType=EventType.SelectionChanged,eventID="combo1")
