@@ -1,4 +1,7 @@
 from de.yaxgl.Controls.Button import Button
+from de.yaxgl.Controls.CheckBox import CheckBox
+from de.yaxgl.Controls.Label import Label
+from de.yaxgl.Controls.ComboBox import ComboBox
 
 
 
@@ -18,11 +21,13 @@ class SimpleComponentFactory:
         
         if(xmlElement.localName == "button"):
             component = Button(owner, xmlElement.getAttribute("id"))
+        elif(xmlElement.localName == "checkbox"):
+            component = CheckBox(owner, xmlElement.getAttribute("id"))
+        elif(xmlElement.localName == "label"):
+            component = Label(owner, xmlElement.getAttribute("id"))
+        elif(xmlElement.localName == "combobox"):
+            component = ComboBox(owner, xmlElement.getAttribute("id"))
 #===============================================================================
-#            else if (xmlElement.LocalName.Equals("label"))
-#            {
-#                component = new Label(owner, xmlElement.Attributes["id"].InnerText);
-#            }
 #            else if (xmlElement.LocalName.Equals("editbox"))
 #            {
 #                component = new EditBox(owner, xmlElement.Attributes["id"].InnerText);
@@ -31,17 +36,9 @@ class SimpleComponentFactory:
 #            {
 #                component = new TextBox(owner, xmlElement.Attributes["id"].InnerText);
 #            }
-#            else if (xmlElement.LocalName.Equals("checkbox"))
-#            {
-#                component = new CheckBox(owner, xmlElement.Attributes["id"].InnerText);
-#            }
 #            else if (xmlElement.LocalName.Equals("imagebox"))
 #            {
 #                component = new ImageBox(owner, xmlElement.Attributes["id"].InnerText);
-#            }
-#            else if (xmlElement.LocalName.Equals("combobox"))
-#            {
-#                component = new ComboBox(owner, xmlElement.Attributes["id"].InnerText);
 #            }
 #            else if (xmlElement.LocalName.Equals("listbox"))
 #            {

@@ -1,78 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-
-namespace de.yaxgl
-{
-    public class ComboBox:Control
-    {
-        public ComboBox(Container owner, string ID)
-        {
-            this.owner = owner;
-            this.ID = ID;
-            this.control = new System.Windows.Forms.ComboBox();
-            ((System.Windows.Forms.ComboBox)this.control).DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            
-            /*registered events*/
-            this.control.Click += new System.EventHandler(clickEvent);
-            this.control.GotFocus += new System.EventHandler(gotFocusEvent);
-            this.control.LostFocus += new System.EventHandler(lostFocusEvent);
-            ((System.Windows.Forms.ComboBox)this.control).SelectionChangeCommitted += new System.EventHandler(selectionChangedEvent);
-        }
-
-        public override void initializeNativeControl(System.Xml.XmlElement xmlElement)
-        {
-            setBounds(Convert.ToInt32(xmlElement.Attributes["xpos"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["ypos"].InnerText), 
-                      Convert.ToInt32(xmlElement.Attributes["width"].InnerText),
-                      Convert.ToInt32(xmlElement.Attributes["height"].InnerText));
-
-            foreach (XmlNode xmlNode in xmlElement.ChildNodes)
-            {
-                if (xmlNode.NodeType == XmlNodeType.Element)
-                {
-                    XmlElement itemElement = (XmlElement)xmlNode;
-                    addItem(itemElement.Attributes["label"].InnerText);
-                }
-            }
-
-            if (xmlElement.HasAttribute("selected"))
-                select(xmlElement.Attributes["selected"].InnerText);
-           
-        }
+import wx
+from de.yaxgl.Base.Control import Control
 
 
-        public void addItem(string item)
-        {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
-            comboBox.Items.Add(item);
-        }
 
-        public void addRange(String[] items) {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
-            comboBox.Items.AddRange(items);
-        }
-
-        public void clearItems()
-        {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
-            comboBox.Items.Clear();
-        }
+class ComboBox(Control):
+    
+    def __init__(self, owner, ID):
+        Control.__init__(self)
+        self.owner = owner
+        self.ID = ID
         
-        public void select(string selection)
-        {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
-            if(comboBox.Items.Contains(selection))
-            {
-                comboBox.SelectedIndex=comboBox.FindStringExact(selection);
-            }
-        }
-        
-        public string getSelectedItem()
-        {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)this.control;
-            return (string)comboBox.SelectedItem;
-        }
-    }
-}// END NAMESPACE
+    def initializeNativeControl(self, xmlElement):
+        itemList = []
+        for node in xmlElement.childNodes:
+            if(node.nodeType == node.ELEMENT_NODE and node.localName == "item"):
+                itemList.append(node.getAttribute("label"))
+        self.control = wx.ComboBox(parent=self.owner.panel,
+                                 pos=wx.Point(int(xmlElement.getAttribute("xpos")), int(xmlElement.getAttribute("ypos"))),
+                                 size=wx.Size(int(xmlElement.getAttribute("width")), int(xmlElement.getAttribute("height"))),
+                                 style=wx.CB_READONLY,
+                                 choices=itemList
+                                )
+        self.control.Bind(wx.EVT_COMBOBOX, self.onSelectionEvent)
+        self.select(xmlElement.getAttribute("selected"))
+    
+    def onSelectionEvent(self, event):
+        self.selectionChangedEvent(self, event)
+
+    def addItem(self, item):
+        raise NotYetImplementedError("ComboBox::addItem() not yet implemented in the Python/wxWidgets library!")
+    
+    def addRange(self, items):
+        raise NotYetImplementedError("ComboBox::addItem() not yet implemented in the Python/wxWidgets library!")
+    
+    def clearItems(self):
+        raise NotYetImplementedError("ComboBox::addItem() not yet implemented in the Python/wxWidgets library!")
+    
+    def select(self, selection):
+        self.control.SetStringSelection(selection)
+    
+    def getSelectedItem(self):
+        return(self.control.GetValue())

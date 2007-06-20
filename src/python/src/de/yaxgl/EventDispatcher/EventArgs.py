@@ -17,4 +17,4 @@ class EventArgs:
         return(self.eventType)
 
     def __str__(self):
-        return "(eventType=%s, eventID=%s" % (self.eventType, self.eventID)
+        return "(eventType=%s, eventID=%s)" % (self.eventType, self.eventID)
