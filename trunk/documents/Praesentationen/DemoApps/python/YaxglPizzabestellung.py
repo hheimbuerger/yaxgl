@@ -23,12 +23,12 @@ class YaxglPizzabestellung:
         
         
         
-    @EventHandler(EventType.Click, "absenden")
+    @EventHandler(eventType=EventType.Click,
+                  eventID="absenden")
     def onSubmit(self, sender, args):
         pizzaauswahl = self.mainwin.getComponentById("pizzaauswahl")
         ergebnis = self.mainwin.getComponentById("bestellergebnis")
         ergebnis.setLabel("Ihre Bestellung einer Pizza " + pizzaauswahl.getSelectedItem() + " wurde versandt!")
-
 
 
 
