@@ -5,12 +5,11 @@ import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.widgets.Listener;
 
-import de.yaxgl.EventDispatcher.*;
-import de.yaxgl.EventDispatcher.Attribute.*;
+import de.yaxgl.EventDispatcher.EventArgs;
+import de.yaxgl.EventDispatcher.Attribute.EventType;
 
-;
+
 
 public abstract class Control extends Component implements Containable {
 
