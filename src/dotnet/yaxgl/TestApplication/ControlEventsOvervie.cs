@@ -98,7 +98,7 @@ namespace TestApplication
 
 
         [de.yaxgl.EventHandler(eventType = EventType.GotFocus, eventID = ".*", regexOn = true)]
-        public void somethingClicked(Component sender, de.yaxgl.EventArgs args)
+        public void somethingFocused(Component sender, de.yaxgl.EventArgs args)
         {
             System.Console.WriteLine("Something new got focus");
         }
