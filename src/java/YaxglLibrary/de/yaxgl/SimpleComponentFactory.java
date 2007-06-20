@@ -45,39 +45,39 @@ public class SimpleComponentFactory {
           {
               component = new EditBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("textbox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:textbox"))
           {
-              //component = new TextBox(owner, xmlElement.getAttribute("id"));
+              component = new TextBox(owner, xmlElement.getAttribute("id"));
           }
           else if (xmlElement.getNodeName().equals("yaxgl:checkbox"))
           {
               component = new CheckBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("imagebox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:imagebox"))
           {
-             // component = new ImageBox(owner, xmlElement.getAttribute("id"));
+              component = new ImageBox(owner, xmlElement.getAttribute("id"));
           }
           else if (xmlElement.getNodeName().equals("yaxgl:combobox"))
           {
               component = new ComboBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("listbox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:listbox"))
           {
              // component = new ListBox(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("radiobutton"))
+          else if (xmlElement.getNodeName().equals("yaxgl:radiobutton"))
           {
              // component = new RadioButton(owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("groupref"))
+          else if (xmlElement.getNodeName().equals("yaxgl:groupref"))
           {
              // component = new Group(xmlElement.getAttribute("source"), owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("groupbox"))
+          else if (xmlElement.getNodeName().equals("yaxgl:groupbox"))
           {
             //  component = new GroupBox(xmlElement, owner, xmlElement.getAttribute("id"));
           }
-          else if (xmlElement.getNodeName().equals("radiogroup"))
+          else if (xmlElement.getNodeName().equals("yaxgl:radiogroup"))
           {
              // component = new RadioGroup(xmlElement, owner, xmlElement.getAttribute("id"));
           }

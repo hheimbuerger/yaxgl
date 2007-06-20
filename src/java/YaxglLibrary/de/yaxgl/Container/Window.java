@@ -89,7 +89,11 @@ public class Window extends Container {
 		eventHandlerManager.invokeHandlers(control, eventArgs);
 		
 	}
-
+	
+	public Display getDisplay()
+	{
+		return this.display;
+	}
 	
 	public void showInTaskbar(boolean show)
     {
@@ -98,20 +102,6 @@ public class Window extends Container {
 
     public void setBorderStyle(WindowStyle windowStyle)
     {
-    	
-    	switch (windowStyle)
-        { 
-            case Fixed:
-                //thisShell
-                //thisShell.set  this would for example be the style(SWT.CLOSE | SWT.TITLE | SWT.MIN | SWT.MAX)
-            	break;
-            case None:
-                //thisForm.FormBorderStyle = FormBorderStyle.None;
-                break;
-            case Sizeable:
-                //thisForm.FormBorderStyle = FormBorderStyle.Sizable;
-                break;
-        }
     	throw new NotImplementedException();
     }
     
@@ -160,7 +150,8 @@ public class Window extends Container {
     /*if parentWindow is null the parent of this window is automatically the window below*/
     public void showDialog(Window parentWindow)
     {
-        if (parentWindow != null)
+        //TODO : checkout how to show a window modal
+    	if (parentWindow != null)
         {
             this.owner = parentWindow;
             ((org.eclipse.swt.widgets.Shell)this.control).setParent((org.eclipse.swt.widgets.Composite)parentWindow.getNativeComponent());
@@ -170,7 +161,7 @@ public class Window extends Container {
     
     public void hide()
     {
-    	//((org.eclipse.swt.widgets.Shell)this.control).setVisible(false);
+    	((org.eclipse.swt.widgets.Shell)this.control).setVisible(false);
     }
 
     public void close()
