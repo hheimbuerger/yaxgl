@@ -23,10 +23,10 @@ namespace TestApplication
             
             Window win=winManager.createWindow(@"../../test.xml", new ControlEventsOvervie(winManager));
 
-            Button but = new Button(win, "button2");
-            but.setLabel("erstellt in testappl");
-            but.setBounds(0, 120, 100, 20);
-            win.add(but);
+            //Button but = new Button(win, "button2");
+            //but.setLabel("erstellt in testappl");
+            //but.setBounds(0, 120, 100, 20);
+            //win.add(but);
 
             winManager.run(win);             
         }

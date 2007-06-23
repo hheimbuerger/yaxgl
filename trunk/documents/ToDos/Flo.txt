@@ -1,0 +1,15 @@
+1.walkthrough .NEt C# code and mark all ugly stuff
+->fix all this stuff
+
+2.implementation of the java project so thats same support like .NET
+ -xml validierung and so on
+3.checkout the thing with the Adapter-Pattern
+ -THINK ABOUT A GOOD FACTORY STRUCTURE
+
+4. think about some new Controls
+
+5. Write a Javadoc for the java project
+
+Notes
+-attribute icon as default and an yaxgl default icon in each lib
+-alternativeText for ImageBox

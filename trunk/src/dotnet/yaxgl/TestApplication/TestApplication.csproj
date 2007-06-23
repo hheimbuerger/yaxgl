@@ -45,7 +45,6 @@
     <Content Include="test.xml" />
     <Content Include="testDialog.xml" />
     <Content Include="testgroup.xml" />
-    <Content Include="capy.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YaxglLibrary\YaxglLibrary.csproj">
