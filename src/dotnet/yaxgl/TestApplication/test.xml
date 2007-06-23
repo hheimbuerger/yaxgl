@@ -2,14 +2,14 @@
 <yaxgl:window xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd"
-        title="Controls Übersicht" xpos="600" ypos="600" height="400" width="600" 
-        id="window1" icon="../../capy.ico" minimizeBox="true" maximizeBox="false" borderStyle="fixed">
+        title="Window title" xpos="600" ypos="600" height="400" width="600" 
+        id="window1" icon="../../capy.ico"  minimizeBox="true" maximizeBox="false" borderStyle="fixed">
   
   <yaxgl:imagebox id="imagebox1" xpos="350" ypos="230" width="200" height="130" source="../../Logo.png" alternativeText="Bild nicht vorhanden"/>
-  <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="Groupbox">
+  <yaxgl:groupbox id="groupbox1" xpos="350" ypos="10" width="200" height="100" title="GroupBox">
     <yaxgl:radiogroup id="radiogroup1" xpos="10" ypos="15" width="120" height="60" checked="radio2">
-      <yaxgl:radiobutton id="radio1" label="Radiobutton1" xpos="0" ypos="0" height="20" width="100"/>
-      <yaxgl:radiobutton id="radio2" label="Radiobutton2" xpos="0" ypos="20" height="20" width="100"/>
+      <yaxgl:radiobutton id="radio1" label="RadioButton1" xpos="0" ypos="0" height="20" width="100"/>
+      <yaxgl:radiobutton id="radio2" label="RadioButton2" xpos="0" ypos="20" height="20" width="100"/>
     </yaxgl:radiogroup>
   </yaxgl:groupbox>
 
@@ -19,13 +19,14 @@
     <yaxgl:item label="Listboxentry3" selected="true"></yaxgl:item>
   </yaxgl:listbox>
 
-  <yaxgl:label id="label1" xpos="10" ypos="10" height="20" width="100" label="Ich bin ein Label:"/>
-  <yaxgl:button id="button1" label="Push me!" xpos="10" ypos="40" height="20" width="100"/>
-  <yaxgl:editbox id="editbox1" text="Ersetz mich!" xpos="10" ypos="80" height="20" width="150" maxlength="20"/>
-  <yaxgl:checkbox id="checkbox1" xpos="200" ypos="10" height="20" width="100" label="Checkbox 1" />
-  <yaxgl:checkbox id="checkbox2" xpos="200" ypos="30" height="20" width="100" label="Checkbox 2" checked="true"/>
-  <yaxgl:combobox id="combobox1" xpos="200" ypos="80" width="100" height="20" selected="Fleisch">
-		<yaxgl:item  label="Salat"/>
+  <yaxgl:label id="label1" xpos="10" ypos="10" height="20" width="100" label="Label:"/>
+  <yaxgl:button id="button1" label="Button" xpos="10" ypos="40" height="20" width="100"/>
+  <yaxgl:editbox id="editbox1" text="EditBox" xpos="10" ypos="80" height="20" width="150" maxlength="20"/>
+  <yaxgl:checkbox id="checkbox1" xpos="200" ypos="10" height="20" width="100" label="CheckBox 1" />
+  <yaxgl:checkbox id="checkbox2" xpos="200" ypos="30" height="20" width="100" label="CheckBox 2" checked="true"/>
+  <yaxgl:combobox id="combobox1" xpos="200" ypos="80" width="100" height="20" selected="ComboBox">
+    <yaxgl:item  label="ComboBox"/>
+    <yaxgl:item  label="Salat"/>
 		<yaxgl:item  label="Fleisch"/>
 		<yaxgl:item  label="Gemüse"/>
    </yaxgl:combobox>
