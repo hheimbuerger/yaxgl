@@ -39,7 +39,6 @@ namespace de.yaxgl
     }
      */
 
-    //TODO: welche events sollen die container unterstützen?
     public abstract class Container : Component
     {
         /*holder for Containable components*/
