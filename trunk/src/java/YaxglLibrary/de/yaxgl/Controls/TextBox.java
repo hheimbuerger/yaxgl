@@ -12,12 +12,7 @@ public class TextBox extends Control {
 	{
 		this.owner=owner;
 		this.ID=ID;
-	}
-	
-	
-	@Override
-	public void initializeNativeControl(Element xmlElement) {
-		//| SWT.H_SCROLL means horizontal sroll bar
+//		| SWT.H_SCROLL means horizontal sroll bar
 		int style=(SWT.MULTI |SWT.BORDER  | SWT.V_SCROLL);
 		
 		this.control=new org.eclipse.swt.widgets.Text((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),style);
@@ -26,6 +21,12 @@ public class TextBox extends Control {
 		((org.eclipse.swt.widgets.Text)this.control).addSelectionListener(clickEvent(this));
 		this.control.addFocusListener(focusEvent(this));
 
+	}
+	
+	
+	@Override
+	public void initializeNativeControl(Element xmlElement) {
+		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),
 				Integer.valueOf(xmlElement.getAttribute("width")),

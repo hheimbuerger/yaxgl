@@ -13,16 +13,16 @@ public class CheckBox extends Control {
 		this.owner=owner;
 		this.ID=ID;
 		
+		this.control=new org.eclipse.swt.widgets.Button((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),SWT.CHECK);
+		/*register Events*/
+		((org.eclipse.swt.widgets.Button)this.control).addSelectionListener(clickEvent(this));
+		this.control.addFocusListener(focusEvent(this));
+		
 	}
 	
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
-		this.control=new org.eclipse.swt.widgets.Button((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),SWT.CHECK);
-		
-		/*register Events*/
-		((org.eclipse.swt.widgets.Button)this.control).addSelectionListener(clickEvent(this));
-		this.control.addFocusListener(focusEvent(this));
 		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),

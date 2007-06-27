@@ -33,11 +33,16 @@ public class Window extends Container {
         this.eventHandlerManager = new EventHandlerManager();
            
         Element rootElement = validateXmlDocument(xmlfile);
-        parseXML(rootElement);
+        try {
+			parseXML(rootElement);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
         /*register window events*/
         //form.Click+=new System.EventHandler(form_Click)
         
 	}
+	
 	public void registerEventHandlers(Object eventReciever)
      {
          if(eventReciever!=null)

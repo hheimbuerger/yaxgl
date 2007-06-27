@@ -16,17 +16,17 @@ public class ComboBox extends Control {
 	{
 		this.owner=owner;
 		this.ID=ID;
+		Composite composite=(org.eclipse.swt.widgets.Composite) this.owner.getNativeComponent();
+		//other styles SIMPLE,DROP_DOWN
+		this.control=new org.eclipse.swt.widgets.Combo(composite,SWT.READ_ONLY);
+		/*register events*/
+		((org.eclipse.swt.widgets.Combo)this.control).addSelectionListener(selectionChangedEvent(this));
+		this.control.addFocusListener(focusEvent(this));
 		
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
-		Composite composite=(org.eclipse.swt.widgets.Composite) this.owner.getNativeComponent();
-		//TODO other styles SIMPLE,DROP_DOWN
-		this.control=new org.eclipse.swt.widgets.Combo(composite,SWT.READ_ONLY);
-		/*register events*/
-		((org.eclipse.swt.widgets.Combo)this.control).addSelectionListener(selectionChangedEvent(this));
-		this.control.addFocusListener(focusEvent(this));
 		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),

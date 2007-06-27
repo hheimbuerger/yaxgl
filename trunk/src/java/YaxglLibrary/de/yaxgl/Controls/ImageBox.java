@@ -20,14 +20,15 @@ public class ImageBox extends Control {
 		this.owner=owner;
 		this.ID=ID;
 		
+		Composite composite=(Composite)this.owner.getNativeComponent();
+		this.control=new org.eclipse.swt.widgets.Label(composite,SWT.NONE);
+		//TODO: events
+		
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
 		
-		Composite composite=(Composite)this.owner.getNativeComponent();
-		this.control=new org.eclipse.swt.widgets.Label(composite,SWT.NONE);
-		//TODO: events
 		
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),

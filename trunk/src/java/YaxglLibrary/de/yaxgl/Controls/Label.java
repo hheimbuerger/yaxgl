@@ -13,17 +13,20 @@ public class Label extends Control {
 	{
 		this.owner=owner;
 		this.ID=ID;	
+	
+		Composite composite=(org.eclipse.swt.widgets.Composite)this.owner.getNativeComponent();
+		this.control=new org.eclipse.swt.widgets.Label(composite,SWT.NONE);
+		
+		//TODO:Label no click event in swt
+		
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
 		
 		
-		Composite composite=(org.eclipse.swt.widgets.Composite)this.owner.getNativeComponent();
-		//Label no click event in swt
 		
 		
-		this.control=new org.eclipse.swt.widgets.Label(composite,SWT.NONE);
 		setBounds(Integer.valueOf(xmlElement.getAttribute("xpos")),
 				Integer.valueOf(xmlElement.getAttribute("ypos")),
 				Integer.valueOf(xmlElement.getAttribute("width")),
