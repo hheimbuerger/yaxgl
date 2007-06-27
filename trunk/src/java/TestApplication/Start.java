@@ -1,8 +1,7 @@
 import de.yaxgl.Base.Component;
 import de.yaxgl.Container.*;
-import de.yaxgl.Controls.Button;
-import de.yaxgl.Controls.CheckBox;
-import de.yaxgl.Controls.ComboBox;
+
+import de.yaxgl.Controls.*;
 import de.yaxgl.EventDispatcher.EventArgs;
 import de.yaxgl.EventDispatcher.Attribute.EventHandler;
 import de.yaxgl.EventDispatcher.Attribute.EventType;
@@ -24,6 +23,18 @@ public class Start {
 			e.printStackTrace();
 		}
 	
+	}
+	
+	@EventHandler(eventType=EventType.Click,eventID="listbox1")
+	public void listboxHandler(Component sender,EventArgs eventArgs)
+	{
+		for(String s :((ListBox)sender).getSelectedItems())
+		{
+			System.out.println(s);
+			
+		}
+		
+		
 	}
 	
 	@EventHandler(eventType=EventType.Click,eventID="button1")
