@@ -13,15 +13,15 @@ public class EditBox extends Control {
 	{
 		this.owner=owner;
 		this.ID=ID;
-		
+		//		styles CENTER, LEFT, MULTI, PASSWORD, SINGLE, RIGHT, READ_ONLY, WRAP 
+		int style=(SWT.SINGLE|SWT.BORDER);
+		this.control=new org.eclipse.swt.widgets.Text((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),style);
+
 	}
 	
 	@Override
 	public void initializeNativeControl(Element xmlElement) {
-		//styles CENTER, LEFT, MULTI, PASSWORD, SINGLE, RIGHT, READ_ONLY, WRAP 
-		int style=(SWT.SINGLE|SWT.BORDER);
-		this.control=new org.eclipse.swt.widgets.Text((org.eclipse.swt.widgets.Composite)owner.getNativeComponent(),style);
-		
+				
 		/*register Events*/
 		((org.eclipse.swt.widgets.Text)this.control).addSelectionListener(clickEvent(this));
 		this.control.addFocusListener(focusEvent(this));

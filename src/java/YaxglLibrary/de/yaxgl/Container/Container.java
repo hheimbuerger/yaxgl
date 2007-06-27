@@ -28,7 +28,7 @@ import de.yaxgl.Helper.Dimension;
 
 public abstract class Container extends Component {
 	/* holder for Containable components */
-	private Map<String, Containable> components = new Hashtable<String, Containable>();
+	protected Map<String, Containable> components = new Hashtable<String, Containable>();
 
 	/*
 	 * notifys the EventHandlerManager for invoke incomming event from specific
@@ -84,6 +84,7 @@ public abstract class Container extends Component {
 			Document xmlDocument = null;
 			DocumentBuilder builder=null;
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			factory.setNamespaceAware(true);
 			
 			try {
 				builder = factory.newDocumentBuilder();
@@ -136,13 +137,13 @@ public abstract class Container extends Component {
 	 * parsing the yaxgl xml file, generates from yaxgl xml file yaxgl
 	 * components and fills the components container
 	 */
-	protected void parseXML(Element rootElement) {
+	protected void parseXML(Element rootElement) throws Exception {
 
 		//TODO: get the LocalName and check if its equals the element and check for the uri
 		/* set container options from xml atributes here */
-		if (rootElement.getNodeName().equals("yaxgl:window")) {
+		if (rootElement.getLocalName().equals("window")) {
 			initializeNativeControl(rootElement);
-		} else if (rootElement.getNodeName().equals("yaxgl:group")) {
+		} else if (rootElement.getLocalName().equals("group")) {
 			Dimension dimension = new Dimension(Integer.valueOf(rootElement
 					.getAttribute("width")), Integer.valueOf(rootElement
 					.getAttribute("height")));

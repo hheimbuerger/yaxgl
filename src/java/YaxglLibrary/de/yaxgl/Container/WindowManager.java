@@ -9,12 +9,7 @@ import org.eclipse.swt.widgets.Shell;
 import de.yaxgl.Helper.LookAndFeel;
 
 public class WindowManager {
-/*
-	while (!shell.isDisposed ()) {
-		if (!display.readAndDispatch ()) display.sleep ();
-	}
-	display.dispose ();
-	*/
+
 	 List<Window> windows = null;
      private static WindowManager instance = null;
      private static boolean initialized = false;
@@ -30,10 +25,8 @@ public class WindowManager {
      public static void initialize(LookAndFeel lookAndFeel) throws Exception
      {
          if (lookAndFeel != LookAndFeel.System)
-        	 //TODO
         	 throw new Exception("The selected LookAndFeel is not supported.");
-        	 // throw new NotSupportedException("Error: The LookAndFeel." + lookAndFeel.toString() + " style is not supported in C# .NET applications");
-         
+        	 
          initialized=true;
      }
      
@@ -41,8 +34,7 @@ public class WindowManager {
      public static WindowManager getInstance() throws Exception
      {
          if (!initialized)
-            //TODO //throw new NotYetInitilaizedException("Error: You have to initialize the WindowManager with a LookAndFeel before you can get an instance");
-        	 throw new Exception("The WindowManager must be initialized before you can have an instance.");
+             throw new Exception("The WindowManager must be initialized before you can have an instance.");
          
          if (instance == null)
          {

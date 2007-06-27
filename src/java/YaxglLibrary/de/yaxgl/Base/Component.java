@@ -59,7 +59,7 @@ public abstract class Component {
     public void setDimension(Dimension dimension)
     {
         this.control.setSize(dimension.getWidth(),dimension.getHeight());   
-        }
+    }
 
     public void setLocation(Location location)
     {
