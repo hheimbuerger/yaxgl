@@ -14,7 +14,19 @@
 	<yaxgl:checkbox id="checkbox1" xpos="200" ypos="30" width="100" height="20" label="dubble chees" checked="true"/>
 	<yaxgl:checkbox id="checkbox2" xpos="200" ypos="50" width="100" height="20" label="tonno"/>
 	<yaxgl:editbox id="edit1" xpos="200" ypos="80" width="120" height="20" text="cewl" maxlength="10" />
+	<yaxgl:radiogroup checked="radio2" height="20" xpos="10" width="200" ypos="110" id="radiogroup1">
+		<yaxgl:radiobutton id="radio1" height="20" width="60" label="radio1" xpos="0" ypos="1"/>
+		<yaxgl:radiobutton id="radio2" height="20" width="60" label="radio2" xpos="70" ypos="1"/>
+	</yaxgl:radiogroup>
 	<!-- maxlength muss hier gesetzt werden da es keinen default hat wenn nicht validiert wird hats überhaupt n default? -->
 	<yaxgl:textbox id="textbox1" xpos="10" ypos="150" width="300" height="100" maxlength="100"/>
 	<yaxgl:imagebox id="imagebox1" xpos="350" ypos="150" width="250" height="180" source="logo.png"/>
+	<yaxgl:groupbox height="100" xpos="350" width="200" title="GroupBox" ypos="30" id="groupbox1">
+	<yaxgl:button id="button1" xpos="10" ypos="30" height="20" width="60" label="push"/>
+	</yaxgl:groupbox>
+	<yaxgl:groupref id="group1" xpos="10" ypos="280" source="group.xml" />
+	<yaxgl:listbox height="80" xpos="170" width="100" ypos="280" id="listbox1">
+		<yaxgl:item label="Schoko" selected="true"/>
+		<yaxgl:item label="Vanille"/>
+	</yaxgl:listbox>
 </yaxgl:window>
