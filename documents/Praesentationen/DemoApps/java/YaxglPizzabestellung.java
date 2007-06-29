@@ -17,7 +17,8 @@ public class YaxglPizzabestellung {
 	public void run() throws Exception {
         WindowManager.initialize(LookAndFeel.System);
         wm = WindowManager.getInstance();
-        mainwin = wm.createWindow("../Pizzabestellung_Hauptfenster.xml", this);
+        mainwin = wm.createWindow("../Pizzabestellung_Hauptfenster.xml",
+                                  this);
         wm.run(mainwin);
 	}
     
@@ -26,9 +27,13 @@ public class YaxglPizzabestellung {
 	@EventHandler(eventType=EventType.Click,
                   eventID="absenden")
 	public void onSubmit(Component sender, EventArgs args) {
-        ComboBox pizzaauswahl = (ComboBox)mainwin.getComponentById("pizzaauswahl");
-        Label ergebnis = (Label)mainwin.getComponentById("bestellergebnis");
-        ergebnis.setLabel("Ihre Bestellung einer Pizza " + pizzaauswahl.getSelectedItem() + " wurde versandt!");
+        ComboBox pizzaauswahl =
+            (ComboBox)mainwin.getComponentById("pizzaauswahl");
+        Label ergebnis =
+            (Label)mainwin.getComponentById("bestellergebnis");
+        ergebnis.setLabel("Ihre Bestellung einer Pizza "
+                        + pizzaauswahl.getSelectedItem()
+                        + " wurde versandt!");
 	}
 	
     
