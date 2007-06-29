@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <!-- Das anzuzeigende Fenster -->
+                                                                  <!--  http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd -->
 <yaxgl:window xmlns:yaxgl="http://www.yaxgl.de/schema/yaxgl/1.0/"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ http://www.yaxgl.de/schema/yaxgl/1.0/YAXGL_window.xsd"
+				xsi:schemaLocation="http://www.yaxgl.de/schema/yaxgl/1.0/ F:\Projekte\YAXGL\SVN-Sandbox\src\xsd\YAXGL_window.xsd"
         id="mainwindow" 
         title="YAXGL Pizzabestellung"
-        xpos="100" ypos="100" width="300" height="220" 
+        xpos="100" ypos="100" width="300" height="220"
         icon="../yaxgl.ico"
         minimizeBox="false" maximizeBox="false" showInTaskbar="true" borderStyle="fixed">
 
@@ -17,10 +18,10 @@
 		<yaxgl:item  label="Hawaii"/>
 		<yaxgl:item  label="Calzone"/>
     </yaxgl:combobox>
-
+    
     <!-- Diverse Checkboxen zur Auswahl von Sonderbelegungen mit beschreibendem Label -->
 	<yaxgl:label id="label2" xpos="10" ypos="43" height="20" width="100" label="Sonderbelegungen"/>
-    <yaxgl:checkbox id="belag1" xpos="110" ypos="40" width="100" height="20" label="Extra Käse" />
+    <yaxgl:checkbox id="belag1" xpos="110" ypos="40" width="100" height="20" label="Extra Käse"/>
     <yaxgl:checkbox id="belag2" xpos="110" ypos="60" width="100" height="20" label="Peperoni" checked="true"/>
     <yaxgl:checkbox id="belag3" xpos="110" ypos="80" width="100" height="20" label="Oliven" checked="true"/>
   

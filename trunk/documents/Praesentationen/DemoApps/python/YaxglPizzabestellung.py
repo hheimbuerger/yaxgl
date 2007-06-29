@@ -17,7 +17,8 @@ class YaxglPizzabestellung:
     def run(self):
         WindowManager.initialize(LookAndFeel.System)
         self.wm = WindowManager.getInstance()
-        self.mainwin = self.wm.createWindow("../Pizzabestellung_Hauptfenster.xml", self)
+        self.mainwin = self.wm.createWindow("../Pizzabestellung_Hauptfenster.xml",
+                                            self)
         self.wm.run(self.mainwin)
         
         
@@ -27,8 +28,12 @@ class YaxglPizzabestellung:
                   eventID="absenden")
     def onSubmit(self, sender, args):
         pizzaauswahl = self.mainwin.getComponentById("pizzaauswahl")
+        
         ergebnis = self.mainwin.getComponentById("bestellergebnis")
-        ergebnis.setLabel("Ihre Bestellung einer Pizza " + pizzaauswahl.getSelectedItem() + " wurde versandt!")
+        
+        ergebnis.setLabel("Ihre Bestellung einer Pizza "
+                        + pizzaauswahl.getSelectedItem()
+                        + " wurde versandt!")
 
 
 
