@@ -19,7 +19,7 @@
 		<yaxgl:radiobutton id="radio2" height="20" width="60" label="radio2" xpos="70" ypos="1"/>
 	</yaxgl:radiogroup>
 	<!-- maxlength muss hier gesetzt werden da es keinen default hat wenn nicht validiert wird hats überhaupt n default? -->
-	<yaxgl:textbox id="textbox1" xpos="10" ypos="150" width="300" height="100" maxlength="100"/>
+	<yaxgl:textbox id="textbox1" xpos="10" ypos="150" width="300" height="100" maxlength="100" text="text"/>
 	<yaxgl:imagebox id="imagebox1" xpos="350" ypos="150" width="250" height="180" source="logo.png"/>
 	<yaxgl:groupbox height="100" xpos="350" width="200" title="GroupBox" ypos="30" id="groupbox1">
 	<yaxgl:button id="button1" xpos="10" ypos="30" height="20" width="60" label="push"/>
