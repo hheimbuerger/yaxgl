@@ -2,21 +2,33 @@
 ===== To Do
 ==========================================================================================================
 
-Aktuell:
-- Praesentation: Design-Kriterien
-
-Python Library:
-- ...
-
-XML Schema:
-- unique keys
-- ...
-
-Diverses:
-- Tagline fuer Website
+Implementierung:
 - Fehlerbehandlung
+- Controls fuer wxPython
+- XML Schema: unique keys
 - EventType.Any missing in .NET and Java
 
+Dokumentation:
+- Terminologie, z. B. "SWT/Java"
+- Schema Validierung
+- Tutorial
+- Fazit / Ausblick / Abgrenzung / Erweiterungsmoeglichkeiten
+- Link auf Website
+
+Website:
+- META: keywords, summary
+- Tagline
+
+Diverses:
+- VB.NET ausprobieren
+
+
+
+Liste der Aenderungen in Windows Forms/.NET:
+
+
+
+    
 
 
 
